@@ -1,1 +1,1 @@
-Read Me WIP
+Readme for Mintbean Hackathon project
