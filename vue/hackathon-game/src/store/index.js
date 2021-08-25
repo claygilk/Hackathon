@@ -7,23 +7,37 @@ export default createStore({
     deck: [],
     playerHand1: [],
     selectedTile: null,
-    pickup: false
+    pickup: false,
+    currentWord: [],
+    currentCellIds: [],
   },
   mutations: {
-    SELECT_TILE(state, letter){
+    xResetCurrentWord() {
+      this.state.currentWord = []
+      this.state.currentCellIds = []
+    },
+    xSelectTile(state, letter){
       this.state.selectedTile = letter
       this.state.pickup = true
     },
-    PLACE_TILE(state, letter){
+    xPlaceTile(state, tile){
       
+      // reset selected tile since tile is now placed on the board
       this.state.selectedTile = null
 
-      const index = this.state.playerHand1.indexOf(letter);
+      // get index of letter from player's hand
+      const index = this.state.playerHand1.indexOf(tile.letter);
 
+      // remove that letter from the player's hand
       this.state.playerHand1.splice(index, 1);
-      
+
+      // add that letter to currentWord
+      this.state.currentWord.push(tile.letter)
+
+      // track where tiles are being placed so that they can be removed if not a word
+      this.state.currentCellIds.push(tile.cellId)
     },
-    DEAL_HAND() {
+    xDealHand() {
       
       while(this.state.playerHand1.length < 7){
         
@@ -44,7 +58,7 @@ export default createStore({
         }
       }
     },
-    CREATE_DECK() {
+    xCreateDeck() {
       console.log('Creating deck...')
 
       for (let i = 0; i < 9; i++){
@@ -136,7 +150,3 @@ export default createStore({
   modules: {
   }
 })
-
-function dealHand() {
-  console.log('hand delt')
-}

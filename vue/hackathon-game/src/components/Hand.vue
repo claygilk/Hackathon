@@ -16,10 +16,10 @@ export default {
     },
     methods: {
         selectTile(letter){
-            this.$store.commit('SELECT_TILE', letter)
+            this.$store.commit('xSelectTile', letter)
         },
         drawMoreTiles(){
-            this.$store.commit('DEAL_HAND')
+            this.$store.commit('xDealHand')
         }
     },
     computed: {
