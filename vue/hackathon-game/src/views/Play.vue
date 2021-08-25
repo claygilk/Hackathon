@@ -3,11 +3,7 @@
     <button @click="deal">New Game</button>
     <h5>Score: {{ currentScore }}</h5>
     
-    <GameGrid 
-    @place="placeTile(letter)" 
-    :clearWord="clearLastWord" 
-    @cleared="clearLastWord=!clearLastWord"
-    />
+    <GameGrid @place="placeTile(letter)"/>
 
     <Hand/>
     
@@ -20,6 +16,7 @@ import GameGrid from '../components/GameGrid.vue'
 import Hand from '../components/Hand.vue'
 import scoreCalculator from '../engine/scoreCalculator'
 import dictionaryService from '../services/dictionaryService'
+import {bus} from '../main'
 
 export default {
   components: {
@@ -31,7 +28,6 @@ export default {
     return{
       isSpelling: false,
       currentScore: 0,
-      clearLastWord: false,
     }
   },
   methods: {
@@ -40,6 +36,7 @@ export default {
     },
     submitWord(){
       let word = this.$store.state.currentWord
+      console.log('submitWord()')
 
       dictionaryService.lookupWord(word)
         .then(response => {
@@ -53,19 +50,11 @@ export default {
         })
         .catch(err => {
           console.log(word + ' is not a word')
-
-          this.removeWordFromGrid()
+          this.emitter.emit('undoWord')
         })
         .finally(() => {
-          this.resetCurrentWord()
-          this.clearLastWord = true
+          this.$store.commit('xResetCurrentWord')
         })
-    },
-    resetCurrentWord(){
-      this.$store.commit('xResetCurrentWord')
-    },
-    removeWordFromGrid(){
-      console.log('remove')
     }
   },
   created() {

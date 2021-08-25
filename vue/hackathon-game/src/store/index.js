@@ -37,6 +37,11 @@ export default createStore({
       // track where tiles are being placed so that they can be removed if not a word
       this.state.currentCellIds.push(tile.cellId)
     },
+    xReturnWordToHand(){
+      this.state.currentWord.forEach(letter => {
+        this.state.playerHand1.push(letter)
+      })
+    },
     xDealHand() {
       
       while(this.state.playerHand1.length < 7){

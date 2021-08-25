@@ -14,15 +14,12 @@
             </tr>
             
         </table>
-        <p>{{clearWord}}</p>
     </div>
 </template>
 
 <script>
 export default {
-    props: {
-        clearWord: Boolean
-    },
+    
     data(){
         return {
             height: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
@@ -42,10 +39,17 @@ export default {
             
             this.$store.commit('xPlaceTile', {letter, cellId})
         },
-        clearWord(){
-            console.log(this.cellsToClear)
+        undoWord(){
+            console.log('undoWord()')
 
-            this.$emit('cleared')
+            console.log(this.$store.state.currentCellIds)
+            this.$store.state.currentCellIds.forEach(cell => {
+                console.log('clearing ' + cell)
+                let toClear = document.getElementById(cell)
+                toClear.innerText = ' '
+            })
+
+            this.$store.commit('xReturnWordToHand')
         }
     },
     computed: {
@@ -53,13 +57,11 @@ export default {
             return this.$store.state.currentCellIds
         },
     },
-    watch: {
-        clearWord: (newVal, oldVal) => {
-            console.log('clear triggered')
-            this.clearWord()
-        }
+    created(){
+        this.emitter.on('undoWord', () => {
+            this.undoWord()
+        })
     }
-
 }
 </script>
 
