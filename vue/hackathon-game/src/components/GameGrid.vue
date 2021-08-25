@@ -27,9 +27,11 @@ export default {
     methods: {
         placeTile(tileId) {
             let cell = event.target
+            
             let letter = this.$store.state.selectedTile
 
             cell.innerText = letter 
+            
             this.$store.commit('PLACE_TILE', letter )
         }
     }

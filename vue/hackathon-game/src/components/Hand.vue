@@ -16,8 +16,6 @@ export default {
     },
     methods: {
         selectTile(letter){
-            // this.$emit('selected', tile)
-            console.log('you clicked on ' + letter)
             this.$store.commit('SELECT_TILE', letter)
         },
         drawMoreTiles(){
