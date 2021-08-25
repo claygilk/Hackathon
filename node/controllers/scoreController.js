@@ -17,14 +17,32 @@ const add_score = (req, res) => {
         })
 }
 
+const get_user_scores = (req, res) => {
+    console.log('Getting scores for user...')
+
+    const username = req.params.username
+
+    Score.find({ username: username})
+    .sort('-point_total')
+    .limit(10)
+    .then(records => {
+        res.status(200).send(records)
+    })
+    .catch(err => {
+
+        console.log(err)
+        res.status(404).send()
+    })
+}
+
 const get_all_scores = (req, res) => {
     console.log('Getting scores...')
 
-    const username = req.query.username
-
-    Score.find({ username: username })
+    Score.find()
+        .sort('-point_total')
+        .limit(10)
         .then(records => {
-
+            
             res.status(200).send(records)
         })
         .catch(err => {
@@ -37,4 +55,5 @@ const get_all_scores = (req, res) => {
 module.exports = {
     add_score,
     get_all_scores,
+    get_user_scores
 }

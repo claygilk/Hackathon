@@ -10,7 +10,7 @@ import Scores from '../components/Scores.vue'
 export default {
 
     components: {
-        Scores
+      Scores
     }
 
 }
