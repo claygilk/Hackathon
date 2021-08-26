@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class ="play-diplay">
     <button @click="deal">New Game</button>
     <h5>Score: {{ currentScore }}</h5>
     
@@ -65,5 +65,7 @@ export default {
 </script>
 
 <style>
-
+div {
+  background-image: url("../assets/background.jpg")
+}
 </style>
