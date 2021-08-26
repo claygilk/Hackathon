@@ -120,6 +120,7 @@ export default {
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
+    background-color: #55bcfb;
 }
 
 .grid{

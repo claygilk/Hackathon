@@ -49,5 +49,6 @@ li.tile {
     text-align: center;
     justify-content: center;
     cursor: pointer;
+    background-color: #fcde65;
 }
 </style>
