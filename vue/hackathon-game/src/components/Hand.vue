@@ -39,12 +39,15 @@ ul.hand{
 li.tile {
     list-style-type: none;
     border: 1px solid black;
+    border-radius: 10px;
     margin: 0.5em;
-    /* height: 55px; */
+    /* for some reason setting the padding like this vertically centers the letters */
+    padding: 0.6em;
+    width: 50px;
+    height: 50px;
     box-sizing: border-box;
-    width: 100px;
-    padding: 25px;
     text-align: center;
     justify-content: center;
+    cursor: pointer;
 }
 </style>
