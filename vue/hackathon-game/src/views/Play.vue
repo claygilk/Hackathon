@@ -1,5 +1,5 @@
 <template>
-  <div class ="play-diplay">
+  <div class="play-display">
     <button @click="deal">New Game</button>
     <h5>Score: {{ currentScore }}</h5>
     
@@ -65,7 +65,11 @@ export default {
 </script>
 
 <style>
-div {
+.play-display {
+  /* display: grid;
+  grid-template-areas: "filt main ad";
+  grid-template-columns: 17.5rem auto 17.5rem; */
+  background-size: contain;
   background-image: url("../assets/background.jpg")
 }
 </style>
