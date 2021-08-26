@@ -1,5 +1,6 @@
 const assert = require('assert')
 const gridReader = require('../src/engine/gridReader')
+// import gridReader from '../src/engine/gridReader'
 const _ = require('lodash')
 
 describe('Parses row or column correctly', () => {
@@ -42,9 +43,9 @@ describe('Make list of columns and rows', () => {
 
 describe('Looks up words from array of letters', () => {
 
-    it('looks up real words', done => {
+    it("['D', 'O', 'G', '&nbsp;', 'H', 'I'] passes", done => {
 
-        let test = ['D', 'O', 'G']
+        let test = ['D', 'O', 'G', '&nbsp;', 'H', 'I']
 
         let actual = gridReader.checkWords(test)
 
@@ -53,4 +54,14 @@ describe('Looks up words from array of letters', () => {
 
     })
 
+    it("['X', 'Y', 'Z' '&nbsp;', 'H', 'I'] fails", done => {
+
+        let test = ['X', 'Y', 'Z', '&nbsp;', 'H', 'I']
+
+        let actual = gridReader.checkWords(test)
+        console.log('Actual ' + actual)
+        assert(actual === false)
+        done()
+
+    })
 })

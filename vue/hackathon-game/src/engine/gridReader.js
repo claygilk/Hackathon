@@ -1,4 +1,5 @@
-// const dict = require('../services/dictionaryService')
+const dict = require('../services/dictionaryService')
+// import dictionaryService from '../services/dictionaryService.js'
 
 const readLine = (cellArray) => {
 
@@ -22,24 +23,34 @@ const readLine = (cellArray) => {
     return wordArray
 }
 
-const checkWords = (wordArray) => {
+
+
+const checkWords = (letterArray) => {
 
     let areValid = true
+
+    let wordArray = readLine(letterArray)
 
     wordArray.forEach(word => {
 
         dict.lookupWord(word)
             .then(response => {
-                console.log(response)
-                
+                console.log('then')
             })
             .catch(err => {
-                console.log(err)
+                // console.log('not a real word')
+                console.log('catch')
+
                 areValid = false
+                return areValid
+            })
+            .finally(response => {
+                console.log('finally')
             })
 
     })
-
+    // console.log('are valid is ' + areValid)
+    console.log('return')
     return areValid
 }
 
