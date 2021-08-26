@@ -1,3 +1,5 @@
+// const dict = require('../services/dictionaryService')
+
 const readLine = (cellArray) => {
 
     let wordArray = []
@@ -20,6 +22,26 @@ const readLine = (cellArray) => {
     return wordArray
 }
 
+const checkWords = (wordArray) => {
+
+    let areValid = true
+
+    wordArray.forEach(word => {
+
+        dict.lookupWord(word)
+            .then(response => {
+                console.log(response)
+                
+            })
+            .catch(err => {
+                console.log(err)
+                areValid = false
+            })
+
+    })
+
+    return areValid
+}
 
 
 const createColumns = (rows, cols) => {
@@ -59,5 +81,6 @@ const createRows = (rows, cols) => {
 module.exports = {
     readLine,
     createColumns,
-    createRows
+    createRows,
+    checkWords,
 }

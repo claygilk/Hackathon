@@ -39,3 +39,18 @@ describe('Make list of columns and rows', () => {
         done()
     })
 })
+
+describe('Looks up words from array of letters', () => {
+
+    it('looks up real words', done => {
+
+        let test = ['D', 'O', 'G']
+
+        let actual = gridReader.checkWords(test)
+
+        assert(actual === true)
+        done()
+
+    })
+
+})
