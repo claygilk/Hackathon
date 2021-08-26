@@ -23,36 +23,30 @@ const readLine = (cellArray) => {
     return wordArray
 }
 
-
-
 const checkWords = (letterArray) => {
-
-    let areValid = true
 
     let wordArray = readLine(letterArray)
 
-    wordArray.forEach(word => {
+    async function callAsync() {
 
-        dict.lookupWord(word)
-            .then(response => {
-                console.log('then')
+        const realWords = await dict.lookupWordArray(wordArray)
+            .then(() => {
+    
+                console.log('realWords = ' + realWords)
             })
-            .catch(err => {
-                // console.log('not a real word')
-                console.log('catch')
+    
+        if (realWords.length === wordArray.length) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
 
-                areValid = false
-                return areValid
-            })
-            .finally(response => {
-                console.log('finally')
-            })
+    let test = callAsync()
+    return test
 
-    })
-    // console.log('are valid is ' + areValid)
-    console.log('return')
-    return areValid
-}
+}    
 
 
 const createColumns = (rows, cols) => {

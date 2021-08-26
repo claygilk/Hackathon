@@ -1,8 +1,6 @@
 // import axios from 'axios'
 const axios = require('axios')
 
-
-
 const lookupWord = (word) => { 
     // let string = arrayToString(word)
 
@@ -19,6 +17,7 @@ const lookupWord = (word) => {
 const lookupWordArray = (wordArray) => {
 
     let allCalls = []
+    let realWordResponses = []
 
     wordArray.forEach(word => {
         const call = axios.get('https://api.dictionaryapi.dev/api/v2/entries/en/' + word)
@@ -26,13 +25,20 @@ const lookupWordArray = (wordArray) => {
         allCalls.push(call)
     })
 
-    axios.all(allCalls.then(axios.spread((...responses) => {
-        console.log(responses)
-        return responses
-    }))
-    .catch(err => {
-        console.log(err)
-    }))
+    axios.all(allCalls)
+        .then(axios.spread((...responses) => {
+            
+            responses.forEach(r => {
+                realWordResponses.push(r.status)
+            })
+            
+            console.log('realWordResponses = ' + realWordResponses)
+            return realWordResponses
+        }))
+        .catch(err => {
+            
+            console.log(err.response.status)
+        })
 }
 
 
@@ -48,5 +54,6 @@ const arrayToString = (charArray) => {
 }
 
 module.exports = {
-    lookupWord
+    lookupWord,
+    lookupWordArray
 }
