@@ -10,9 +10,11 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "fs": "0.0.1-security",
     "lodash": "^4.17.21",
     "mitt": "^3.0.0",
     "mocha": "^9.1.0",
+    "path": "^0.12.7",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
