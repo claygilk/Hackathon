@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #scores {
   font-family: 'VT323', monospace;
   width: 25vw;
@@ -52,5 +52,8 @@ li{
   flex-direction: row;
   justify-content: space-between;
   font-size: 1.5em;
+  &:hover{
+    color: #ffc438
+  }
 }
 </style>

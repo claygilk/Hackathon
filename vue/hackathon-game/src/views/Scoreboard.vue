@@ -17,14 +17,17 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 #view{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  background-color: #202a25;
+  background-color: #303134;
+  color: white;
+
+
 }
 
 h1{

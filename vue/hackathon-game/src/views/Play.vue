@@ -71,17 +71,19 @@ button {
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #4CAF50;
+  background-color: #d158ad;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
+  box-shadow:  0px 5px #a34587;
+  font-family: 'VT323', monospace;
+
 }
 
-button:hover {background-color: #3e8e41}
+/* button:hover {background-color: #e642b4} */
 
 button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
+  /* background-color: #3e8e41; */
+  box-shadow: 0 2px rgba(243, 117, 195, 0.575);
   transform: translateY(4px);
 }
 </style>

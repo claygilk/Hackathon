@@ -15,7 +15,7 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 #nav{
-  background: #202a25;
+  background: #34A3CC;
   color: white;
   position: absolute;
   top: 0;
@@ -34,18 +34,24 @@
 #view{
   margin-top: 75px;
   width: 100vw;
+  height: 100vh;
 }
 
 
 a{
   text-decoration: none;
-  &:hover{
-    color: #ffc438
-  }
   &:visited{
     color: white;
   }
 
+}
+
+a:hover{
+    color: #ffc438
+}
+
+body { 
+  margin: 0 !important; 
 }
 
 
