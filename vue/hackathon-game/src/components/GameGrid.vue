@@ -182,6 +182,8 @@ export default {
 
 .grid{
     border-spacing: 5px;
+    display: grid;
+    justify-content: center;
 
 }
 </style>
