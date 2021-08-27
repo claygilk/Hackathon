@@ -69,6 +69,6 @@ export default {
   grid-template-areas: "filt main ad";
   grid-template-columns: 17.5rem auto 17.5rem; */
   background-size: contain;
-  background-image: url("../assets/background.jpg")
+  background-image: url("../assets/background2.jpg")
 }
 </style>
