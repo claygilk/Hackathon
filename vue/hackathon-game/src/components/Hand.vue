@@ -1,10 +1,12 @@
 <template>
   <div >
       <ul class="hand">
-          <li @click="selectTile(tile)" class="tile" v-for="tile in hand" :key="tile">{{ tile }}</li>
+          <!-- <div v-for="(item, i) in items" :key="i"></div> -->
+          <li @click="selectTile(tile)" class="tile" v-for="(tile, i) in hand" :key="tile + i">{{ tile }}</li>
       </ul>
 
-      <button @click="drawMoreTiles">Draw</button>
+      <button @click="drawMoreTiles" :disabled="!this.$store.state.isGameStarted">Draw</button>
+      <button @click="newHand">Get New Hand</button>
   </div>
 </template>
 
@@ -19,6 +21,10 @@ export default {
             this.$store.commit('xSelectTile', letter)
         },
         drawMoreTiles(){
+            this.$store.commit('xDealHand')
+        },
+        newHand(){
+            this.$store.commit('xEmptyHand')
             this.$store.commit('xDealHand')
         }
     },

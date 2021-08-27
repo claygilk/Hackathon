@@ -13,7 +13,7 @@
             </tr>
             
         </table>
-        <button @click="readGrid()">Done Spelling</button>
+        <button @click="readGrid()" :disabled="!this.$store.state.isGameStarted">Done Spelling</button>
     </div>
 </template>
 

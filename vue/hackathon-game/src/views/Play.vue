@@ -1,13 +1,13 @@
 <template>
   <div class="play-display">
-    <button @click="deal">New Game</button>
+    <button @click="startGame">New Game</button>
+
     <h5>Score: {{ currentScore }}</h5>
     
     <GameGrid @place="placeTile(letter)" @doneSpelling="submitWord"/>
 
     <Hand/>
     
-    <button @click.prevent="submitWord">Submit</button>
   </div>
 </template>
 
@@ -30,8 +30,8 @@ export default {
     }
   },
   methods: {
-    deal(){
-      this.$store.commit('xDealHand')
+    startGame(){
+      this.$store.commit('xStartGame')
     },
     submitWord(){
       console.log('submitWord()')
@@ -40,7 +40,7 @@ export default {
       
       let points = scoreCalculator.calcWordScore(word)
       this.currentScore += points
-      
+
       console.log(word + ' is worth ' + points + 'points')
       
       this.$store.commit('xResetCurrentWord')

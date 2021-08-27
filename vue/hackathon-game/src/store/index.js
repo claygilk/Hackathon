@@ -10,8 +10,13 @@ export default createStore({
     pickup: false,
     currentWord: [],
     currentCellIds: [],
+    lifeLines: 3,
+    isGameStarted: false
   },
   mutations: {
+    xStartGame(){
+      this.state.isGameStarted = true
+    },
     xResetCurrentWord() {
       this.state.currentWord = []
       this.state.currentCellIds = []
@@ -48,7 +53,7 @@ export default createStore({
         
         if (this.state.deck.length > 0) {
           // get random index from deck
-          let rand = _.random(0, this.state.deck.length)
+          let rand = _.random(0, this.state.deck.length - 1)
   
           // get value of tile at random index
           let tileToAdd = this.state.deck[rand]
@@ -147,6 +152,14 @@ export default createStore({
       for (let i = 0; i < 2; i++){
         this.state.deck.push('Z')
       }
+    },
+    xEmptyHand(){
+      
+      this.state.playerHand1.forEach(tile => {
+        this.state.deck.push(tile)
+      })
+
+      this.state.playerHand1 = []
     }
 
   },
