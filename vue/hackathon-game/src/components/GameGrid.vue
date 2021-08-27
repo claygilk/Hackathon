@@ -3,6 +3,9 @@
         <table class="grid">
             <tr v-for="row in height" :key="row"> 
                 <td 
+                @drop="onDrop($event, tile)"
+                @dragover.prevent
+                @dragenter.prevent
                 class="empty-square" 
                 v-for="column in width" 
                 :key="column" 
@@ -43,6 +46,9 @@ export default {
             cell.innerText = letter 
             
             this.$store.commit('xPlaceTile', {letter, cellId})
+            cell.classList.remove('empty-square')
+            cell.classList.add('filled-square')
+            console.log(cell)
         },
         undoWord(){
             console.log('undoWord()')
@@ -134,6 +140,12 @@ export default {
             })
 
             return rowArray
+        },
+        onDrop(event){
+            const letter = event.dataTransfer.getData('letter')
+            console.log(event)
+            console.log(letter)
+            this.placeTile()
         }
     },
 
@@ -155,6 +167,17 @@ export default {
     text-align: center;
     justify-content: center;
     background-color: #55bcfb;
+}
+
+.filled-square{
+    background-color: #fcde65;
+    border: 1px solid black;
+    border-radius:10px;
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;
 }
 
 .grid{
