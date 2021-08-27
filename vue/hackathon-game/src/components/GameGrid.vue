@@ -8,7 +8,8 @@
                 :key="column" 
                 :id="row + 'x' + column"
                 @click="placeTile(row + 'x' + column)"
-                >&nbsp;</td>
+                ></td>
+                <!-- &nbsp; -->
             </tr>
             
         </table>
@@ -18,6 +19,7 @@
 
 <script>
 import gridReader from '../engine/gridReader'
+import lookupService from '../services/lookupService'
 
 export default {
     
@@ -25,7 +27,7 @@ export default {
         return {
             height: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
             width: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
-            allWords: []
+            allRowsCols: []
         }
     },
 
@@ -55,16 +57,37 @@ export default {
             this.$store.commit('xReturnWordToHand')
         },
         readGrid(){
+            this.allRowsCols = []
+
             let cols = this.readCols()
-            this.allWords = this.allWords.concat(cols)
+            this.allRowsCols = this.allRowsCols.concat(cols)
 
             let rows = this.readRows()
-            this.allWords = this.allWords.concat(rows)
+            this.allRowsCols = this.allRowsCols.concat(rows)
 
-            console.log(this.allWords)
+            let allWords = []
+
+            this.allRowsCols.forEach(letterArray => {
+                let wordArray = gridReader.letterArrayToStringArray(letterArray)
+
+                if(wordArray.length > 0){
+                    
+                    wordArray.forEach(word => {
+                        if (word.length > 1) {
+                            
+                            allWords.push(word)
+                        }
+                    })
+                }
+            })
+
+            console.log('allWords ' + allWords)
+
+            let test = lookupService.lookupWordArray(allWords)
+            console.log('Grid contains only real words: ' + test)
         },
         readCols(){
-            const cellsByColumn = gridReader.createColumns(this.height, this.width)
+            const cellsByColumn = gridReader.createColumnIds(this.height, this.width)
             
             let columnArray = []
 
@@ -83,7 +106,7 @@ export default {
             return columnArray
         },
         readRows(){
-            const cellsByRow = gridReader.createRows(this.height, this.width)
+            const cellsByRow = gridReader.createRowIds(this.height, this.width)
 
             let rowArray = []
 

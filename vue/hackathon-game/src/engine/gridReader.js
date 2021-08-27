@@ -1,7 +1,5 @@
-const dict = require('../services/dictionaryService')
-// import dictionaryService from '../services/dictionaryService.js'
 
-const readLine = (cellArray) => {
+const letterArrayToStringArray = (cellArray) => {
 
     let wordArray = []
 
@@ -9,7 +7,7 @@ const readLine = (cellArray) => {
 
     cellArray.forEach(cell => {
         
-        if(cell !== '&nbsp;'){
+        if(cell !== ""){
             word += cell
         }
         else {
@@ -20,10 +18,14 @@ const readLine = (cellArray) => {
 
     wordArray.push(word)
 
+    wordArray = wordArray.filter(el => {
+        return el != ''
+    })
+    
     return wordArray
 }
 
-const checkWords = (letterArray) => {
+const checkRowOrColumn = (letterArray) => {
 
     let wordArray = readLine(letterArray)
 
@@ -49,7 +51,7 @@ const checkWords = (letterArray) => {
 }    
 
 
-const createColumns = (rows, cols) => {
+const createColumnIds = (rows, cols) => {
     let columns = []
 
     cols.forEach(c => {
@@ -66,7 +68,7 @@ const createColumns = (rows, cols) => {
     return columns
 }
 
-const createRows = (rows, cols) => {
+const createRowIds = (rows, cols) => {
     let rowArray = []
 
     rows.forEach(r => {
@@ -84,8 +86,8 @@ const createRows = (rows, cols) => {
 }
 
 module.exports = {
-    readLine,
-    createColumns,
-    createRows,
-    checkWords,
+    letterArrayToStringArray,
+    createColumnIds,
+    createRowIds,
+    checkRowOrColumn,
 }

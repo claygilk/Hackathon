@@ -15,8 +15,7 @@
 import GameGrid from '../components/GameGrid.vue'
 import Hand from '../components/Hand.vue'
 import scoreCalculator from '../engine/scoreCalculator'
-import dictionaryService from '../services/dictionaryService'
-import {bus} from '../main'
+import lookupService from '../services/lookupService'
 
 export default {
   components: {
@@ -38,7 +37,7 @@ export default {
       let word = this.$store.state.currentWord
       console.log('submitWord()')
 
-      dictionaryService.lookupWord(word)
+      lookupService.lookupWord(word)
         .then(response => {
           
           if(response.status === 200){

@@ -1,21 +1,15 @@
-const fs = require('fs')
-const path = require('path')
+// const fs = require('fs')
+// const path = require('path')
 
-let rawdata = fs.readFileSync( path.resolve(__dirname, './words_dictionary.json'), 'utf-8')
+// let rawdata = fs.readFileSync( path.resolve(__dirname, './words_dictionary.json'), 'utf-8')
+// let dictionary = JSON.parse(rawdata)
+// import dictionary from './words_dictionary.json'
+const dictionary = require('./words_dictionary.json')
 
-let dictionary = JSON.parse(rawdata)
-
-// const createDict = () => {
-
-//     let rawdata = fs.readFileSync( path.resolve(__dirname, './words_dictionary.json'), 'utf-8')
-//     let dictionary = JSON.parse(rawdata)
-
-//     wordsDict = dictionary
-// }
 
 const lookupWord = (word) => { 
 
-    if(dictionary.hasOwnProperty(word)){
+    if(dictionary.hasOwnProperty(word.toLowerCase())){
         return true
     }
     else {
