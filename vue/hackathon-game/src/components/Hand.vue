@@ -2,7 +2,7 @@
   <div >
       <ul class="hand">
           <!-- <div v-for="(item, i) in items" :key="i"></div> -->
-          <li @click="selectTile(tile)" class="tile" v-for="(tile, i) in hand" :key="tile + i">{{ tile }}</li>
+          <li @dragstart="startDrag($event, tile)" draggable="true" @click="selectTile(tile)" class="tile" v-for="(tile, i) in hand" :key="tile + i">{{ tile }}</li>
       </ul>
 
       <button @click="drawMoreTiles" :disabled="!this.$store.state.isGameStarted">Draw</button>
@@ -26,6 +26,14 @@ export default {
         newHand(){
             this.$store.commit('xEmptyHand')
             this.$store.commit('xDealHand')
+        },
+        startDrag(event, tile){
+            event.dataTransfer.dropEffect = 'move'
+            event.dataTransfer.effectAllowed = 'move'
+            event.dataTransfer.setData('letter', tile)
+            this.selectTile(tile)
+
+            console.log('startDrag')
         }
     },
     computed: {
