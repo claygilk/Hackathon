@@ -13,7 +13,7 @@
             </tr>
             
         </table>
-        <button @click="readGrid()">Test</button>
+        <button @click="readGrid()">Done Spelling</button>
     </div>
 </template>
 
@@ -27,7 +27,8 @@ export default {
         return {
             height: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
             width: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
-            allRowsCols: []
+            allRowsCols: [],
+            allWords: []
         }
     },
 
@@ -58,6 +59,7 @@ export default {
         },
         readGrid(){
             this.allRowsCols = []
+            this.allWords = []
 
             let cols = this.readCols()
             this.allRowsCols = this.allRowsCols.concat(cols)
@@ -75,16 +77,25 @@ export default {
                     wordArray.forEach(word => {
                         if (word.length > 1) {
                             
-                            allWords.push(word)
+                            this.allWords.push(word)
                         }
                     })
                 }
             })
 
-            console.log('allWords ' + allWords)
+            console.log('allWords ' + this.allWords)
 
-            let test = lookupService.lookupWordArray(allWords)
-            console.log('Grid contains only real words: ' + test)
+            let allWordsValid = lookupService.lookupWordArray(this.allWords)
+            console.log('Grid contains only real words: ' + allWordsValid)
+
+            if(allWordsValid) {
+                this.$emit('doneSpelling')
+            }
+            else {
+                this.undoWord()
+            }
+            this.$store.commit('xResetCurrentWord')
+
         },
         readCols(){
             const cellsByColumn = gridReader.createColumnIds(this.height, this.width)

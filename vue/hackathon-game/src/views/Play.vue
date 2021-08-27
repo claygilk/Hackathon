@@ -3,7 +3,7 @@
     <button @click="deal">New Game</button>
     <h5>Score: {{ currentScore }}</h5>
     
-    <GameGrid @place="placeTile(letter)"/>
+    <GameGrid @place="placeTile(letter)" @doneSpelling="submitWord"/>
 
     <Hand/>
     
@@ -34,26 +34,16 @@ export default {
       this.$store.commit('xDealHand')
     },
     submitWord(){
-      let word = this.$store.state.currentWord
       console.log('submitWord()')
 
-      lookupService.lookupWord(word)
-        .then(response => {
-          
-          if(response.status === 200){
-            
-            let points = scoreCalculator.calcWordScore(word)
-            this.currentScore += points
-            console.log(word + ' is worth ' + points + 'points')
-          } 
-        })
-        .catch(err => {
-          console.log(word + ' is not a word')
-          this.emitter.emit('undoWord')
-        })
-        .finally(() => {
-          this.$store.commit('xResetCurrentWord')
-        })
+      let word = this.$store.state.currentWord
+      
+      let points = scoreCalculator.calcWordScore(word)
+      this.currentScore += points
+      
+      console.log(word + ' is worth ' + points + 'points')
+      
+      this.$store.commit('xResetCurrentWord')
     }
   },
   created() {

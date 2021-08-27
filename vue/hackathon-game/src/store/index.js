@@ -44,7 +44,7 @@ export default createStore({
     },
     xDealHand() {
       
-      while(this.state.playerHand1.length < 7){
+      while(this.state.playerHand1.length < 10){
         
         if (this.state.deck.length > 0) {
           // get random index from deck
