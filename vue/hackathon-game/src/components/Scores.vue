@@ -1,10 +1,15 @@
 <template>
-  <h2>High Scores</h2>
-  <ul>
-    <li v-for="score in highScores" :key="score._id"> 
-      {{score.username}} {{score.point_total}}
-    </li>
-  </ul>
+  <div id="scores">
+    <div id="heading">
+      <h2>Top 10</h2>
+    </div>
+    <ul>
+      <li v-for="score in highScores" :key="score._id"> 
+        <div>{{score.username}}</div>
+        <div>{{score.point_total}}</div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -29,5 +34,23 @@ export default {
 </script>
 
 <style>
+#scores {
+  font-family: 'VT323', monospace;
+  width: 25vw;
+}
 
+#heading{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+li{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.5em;
+}
 </style>
