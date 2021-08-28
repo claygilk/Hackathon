@@ -20,8 +20,8 @@
         <button 
         class="push-btn" 
         @click="readGrid()" 
-        :disabled="!this.$store.state.isGameStarted||this.$store.state.currentWord.length<3">
-        Done Spelling <font-awesome-icon icon="phone" />
+        :disabled="!this.$store.state.isGameStarted||this.$store.state.currentWord.length<2">
+        Done Spelling 
         </button>
     </div>
 </template>
@@ -156,6 +156,7 @@ export default {
             }
 
             this.$store.commit('xResetCurrentWord')
+            this.resetDroppableNewTurn()
 
         },
         readCols(){
@@ -209,9 +210,9 @@ export default {
                 })
 
                 this.lastTileId = event.target.id
+                
+                this.resetDroppable()
             }
-
-            this.resetDroppable()
         },
         clearAllDroppable(){
             console.log('resetDroppable')
@@ -227,8 +228,21 @@ export default {
         resetDroppable(){
             this.clearAllDroppable()
             this.currentDroppable = []
+            this.getAllFilledCells()
             this.applyDroppaleToAdjacent(this.lastTileId)
             this.removeDroppableFromFilled()
+        },
+        resetDroppableNewTurn(){
+            this.clearAllDroppable()
+            this.currentDroppable = []
+            let filledIds = this.getAllFilledCells()
+
+            filledIds.forEach(id => {
+            
+                this.applyDroppaleToAdjacent(id)
+            })
+                this.removeDroppableFromFilled()
+
         },
         applyDroppaleToAdjacent(currentId){
             this.currentDroppable.push(currentId)
@@ -251,10 +265,10 @@ export default {
                     if(!this.currentDroppable.includes(id)){
 
                         console.log('applyDroppaleToAdjacent() ' + id)
-                        console.log(cell)
+                        console.log('cell: ', cell)
     
                         
-                            this.applyDroppaleToAdjacent(id)
+                        this.applyDroppaleToAdjacent(id)
                        
                     }
                 }
@@ -262,13 +276,26 @@ export default {
             })
         },
         removeDroppableFromFilled(){
-            let filledIds = document.querySelectorAll('.filled-square')
-            console.log(filledIds)
+            let filledCells = document.querySelectorAll('.filled-square')
+            // console.log('filledIds', filledCells)
 
-            filledIds.forEach(id => {
-                document.getElementById(id).classList.remove('droppable')
+            filledCells.forEach(cell => {
+                // console.log('id', cell.id)
+                document.getElementById(cell.id).classList.remove('droppable')
             })
+        },
+        getAllFilledCells(){
+            let filledCells = document.querySelectorAll('.filled-square')
+            console.log('filledCells', filledCells)
+            let filledIds =[]
+
+            filledCells.forEach(cell => {
+                filledIds.push(cell.id)
+            })
+            console.log('filledIds', filledIds)
+            return filledIds
         }
+
     },
 
     created(){
@@ -294,11 +321,14 @@ export default {
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
-    background-color: #34A3CC;
+    background-color: #030B12;
+    box-shadow:  0px 0px 3px 3px #34a3ccea;
+
 }
 
 .filled-square{
     background-color: #fcde65;
+    /* box-shadow:  0px 0px 3px 3px #fcde65ea; */
     color: black;
     font-family: 'VT323', monospace;
     font-size: 2.5em;
@@ -323,8 +353,8 @@ export default {
 
 } */
 
-.droppable{
+/* .droppable{
   box-shadow:  0px 0px 4px 4px #fcde65a6;
 
-}
+} */
 </style>
