@@ -2,7 +2,7 @@
   <div class="modal-backdrop">
       <div class="modal">
           <h1>Game Over</h1>
-          <p>YOUR SCORE: {{playerScore}}</p>
+          <p>YOUR SCORE: {{this.$store.state.currentScore}}</p>
           <form>
             <label for="initals">ENTER YOUR INITIALS</label>
             <div>
@@ -10,7 +10,6 @@
                 id="initials" 
                 type="text" 
                 maxlength="3" 
-                placeholder="AAA" 
                 autocomplete="off"
                 v-model="initals"
                 onkeypress="return /[a-z]/i.test(event.key)">
@@ -24,10 +23,9 @@
 <script>
 export default {
   name: 'GameOver',
-  props: ['playerScore'],
   data() {
     return{
-      initals: null
+      initals: 'AAA'
     }
   },
   methods: {

@@ -4,13 +4,13 @@
       <button class="push-btn" v-if="!this.$store.state.isGameStarted" @click="startGame">New Game</button>
       <button class="push-btn" v-if="this.$store.state.isGameStarted" @click="endGame">End Game</button>
 
-      <h2>Score: {{ currentScore }}</h2>
+      <h2>Score: {{ this.$store.state.currentScore }}</h2>
       
       <GameGrid @place="placeTile(letter)" @doneSpelling="submitWord"/>
 
       <Hand/>
 
-      <GameOver :playerScore="currentScore" @close="closeGameOver" v-if="gameOver"/>
+      <GameOver @close="closeGameOver" v-if="gameOver"/>
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@
 <script>
 import GameGrid from '../components/GameGrid.vue'
 import Hand from '../components/Hand.vue'
-import scoreCalculator from '../engine/scoreCalculator'
+import tileGenerator from '../engine/tileGenerator'
 import GameOver from '../components/GameOver.vue'
 import scoreService from '../services/scoreService'
 
@@ -26,13 +26,12 @@ export default {
   components: {
     GameGrid,
     Hand,
-    scoreCalculator,
+    tileGenerator,
     GameOver
   },
   data() {
     return{
       isSpelling: false,
-      currentScore: 0,
       gameOver: false
     }
   },
@@ -40,6 +39,14 @@ export default {
     startGame(){
       this.$store.commit('xStartGame')
       this.$store.commit('xDealHand')
+      let cellIds = tileGenerator.getStarterTileIds()
+      this.$store.state.starterTileIds = cellIds
+
+      cellIds.forEach(id => {
+        this.$store.commit('xDrawStarterTiles')
+      })
+
+      this.emitter.emit('startGame')
     },
     endGame(){
       this.$store.commit('xEmptyHand')
@@ -49,24 +56,18 @@ export default {
     submitWord(){
       console.log('submitWord()')
 
-      let word = this.$store.state.currentWord
-      
-      let points = scoreCalculator.calcWordScore(word)
-      this.currentScore += points
-
-      console.log(word + ' is worth ' + points + 'points')
-      
+      this.emitter.emit('doneSpelling')
+      this.$store.commit('xDealHand')
       this.$store.commit('xResetCurrentWord')
     },
     closeGameOver(playerInitials){
-      scoreService.addScore(playerInitials, this.currentScore)
+      scoreService.addScore(playerInitials, this.$store.state.currentScore)
       this.gameOver = false
     }
   },
   created() {
     this.$store.commit('xCreateDeck')
   }
-
 }
 </script>
 
