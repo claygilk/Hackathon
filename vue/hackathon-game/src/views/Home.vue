@@ -22,7 +22,7 @@
         <div>
       <h2>Clay Gilkerson</h2>
       <img class="clay-pic" src="../assets/claysamazingheadshot.jpg">
-      <p>some stuff about clay</p>
+      <p class="clayp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae maiores neque vel ab dolore dicta aliquam laboriosam dignissimos voluptas harum amet, eligendi laborum quas aperiam sequi nemo delectus, necessitatibus itaque!</p>
       <ul>
       <li><a href="https://github.com/claygilk">github</a></li>
       <li><a href="https://www.linkedin.com/in/clay-gilkerson/">LinkedIn</a></li>
@@ -31,7 +31,7 @@
       <div>
       <h2>Jamie Mullins</h2>
       <img class="jamie-pic" src="../assets/jamiesamazingheadshot.jpg">
-      <p>some stuff about jamie</p>
+      <p class="jamiep">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus beatae quis iure enim eum sunt animi sint earum, suscipit ipsa hic culpa incidunt quam. Quam vero voluptate unde ex aspernatur.</p>
       <ul>
       <li><a href="https://github.com/jamiemullins1">github</a></li>
       <li><a href="www.linkedin.com/in/jamie-mullins">LinkedIn</a></li>
@@ -76,9 +76,16 @@ div.homepage{
   width: 250px;
   height: auto;
 }
+.jamiep{
+  font-size: 1rem;
+}
 
 .clay-pic{
   width: 250px;
   height: auto;
+}
+
+.clayp{
+  font-size: 1rem;
 }
 </style>
