@@ -86,7 +86,7 @@ h2{
   box-shadow:  0px 0px 4px 4px #34a3cca9;
   /* border-right: 0px solid #34A3CC; */
   width: 75vw;
-  height: 100vw;
+  height: 150vh;
   text-align: center;
   /* overflow: auto; */
 }
