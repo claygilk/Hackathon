@@ -18,10 +18,26 @@
       <h1>
         Meet the Engineers
       </h1>
-      <h2>Jamie Mullins</h2>
-      <img class="jamie-pic" src="../assets/jamiesamazingheadshot.jpg">
+      <div class="profile">
+        <div>
       <h2>Clay Gilkerson</h2>
       <img class="clay-pic" src="../assets/claysamazingheadshot.jpg">
+      <p>some stuff about clay</p>
+      <ul>
+      <li><a href="https://github.com/claygilk">github</a></li>
+      <li><a href="https://www.linkedin.com/in/clay-gilkerson/">LinkedIn</a></li>
+      </ul>
+      </div>
+      <div>
+      <h2>Jamie Mullins</h2>
+      <img class="jamie-pic" src="../assets/jamiesamazingheadshot.jpg">
+      <p>some stuff about jamie</p>
+      <ul>
+      <li><a href="https://github.com/jamiemullins1">github</a></li>
+      <li><a href="www.linkedin.com/in/jamie-mullins">LinkedIn</a></li>
+      </ul>
+      </div>
+      </div>
       </div>
     </div>
   </div>
@@ -48,6 +64,12 @@ div.homepage{
   width: 75vw;
   height: 100vw;
   text-align: center;
+}
+
+.profile{
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .jamie-pic{
