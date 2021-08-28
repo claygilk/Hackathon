@@ -1,13 +1,15 @@
 <template>
   <div>
     <div class="play-display">
-      <button @click="startGame">New Game</button>
+      <button class="push-btn" v-if="!this.$store.state.isGameStarted" @click="startGame">New Game</button>
+      <button class="push-btn" v-if="this.$store.state.isGameStarted" @click="endGame">End Game</button>
 
       <h2>Score: {{ currentScore }}</h2>
       
       <GameGrid @place="placeTile(letter)" @doneSpelling="submitWord"/>
 
       <Hand/>
+      <GameOver @close="closeGameOver" v-if="gameOver"/>
     </div>
   </div>
 </template>
@@ -16,24 +18,31 @@
 import GameGrid from '../components/GameGrid.vue'
 import Hand from '../components/Hand.vue'
 import scoreCalculator from '../engine/scoreCalculator'
-import lookupService from '../services/lookupService'
+import GameOver from '../components/GameOver.vue'
 
 export default {
   components: {
     GameGrid,
     Hand,
-    scoreCalculator
+    scoreCalculator,
+    GameOver
   },
   data() {
     return{
       isSpelling: false,
       currentScore: 0,
+      gameOver: false
     }
   },
   methods: {
     startGame(){
       this.$store.commit('xStartGame')
       this.$store.commit('xDealHand')
+    },
+    endGame(){
+      this.$store.commit('xEmptyHand')
+      this.$store.state.isGameStarted = false
+      this.gameOver = true;
     },
     submitWord(){
       console.log('submitWord()')
@@ -46,6 +55,9 @@ export default {
       console.log(word + ' is worth ' + points + 'points')
       
       this.$store.commit('xResetCurrentWord')
+    },
+    closeGameOver(){
+      this.gameOver = false
     }
   },
   created() {
@@ -67,15 +79,16 @@ h2{
 
 .play-display{
   background-color: #030B12;
-  border-left: 3px solid #34A3CC;
-  border-right: 3px solid #34A3CC;
+  border-left: 1px solid #34A3CC;
+  box-shadow:  0px 0px 4px 4px #34a3cca9;
+  /* border-right: 0px solid #34A3CC; */
   width: 75vw;
   height: 100vw;
   text-align: center;
   /* overflow: auto; */
 }
 
-button {
+button.push-btn {
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -94,7 +107,7 @@ button {
 
 /* button:hover {background-color: #e642b4} */
 
-button:active {
+button.push-btn:active {
   /* background-color: #3e8e41; */
   box-shadow: 0 2px rgba(243, 117, 195, 0.575);
   transform: translateY(4px);

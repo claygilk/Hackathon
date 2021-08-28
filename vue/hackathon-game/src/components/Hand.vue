@@ -14,7 +14,7 @@
       </ul>
 
       <!-- <button @click="drawMoreTiles" :disabled="!this.$store.state.isGameStarted">Draw</button> -->
-      <button @click="newHand" :disabled="!this.$store.state.isGameStarted||this.$store.state.lifelines!==0">Get New Hand</button>
+      <button class="push-btn" @click="newHand" :disabled="!this.$store.state.isGameStarted||this.$store.state.lifelines!==0">Get New Hand</button>
   </div>
 </template>
 
@@ -59,6 +59,7 @@ ul.hand{
     display: flex;
     flex-direction: row;
     border: 3px solid #fcde65;
+    box-shadow: 0px 0px 4px 4px #ffc33863;
     border-radius: 20px;
     margin-left: 3em;
     margin-right: 3em;

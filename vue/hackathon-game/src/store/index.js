@@ -17,6 +17,7 @@ export default createStore({
     xStartGame(){
       this.state.isGameStarted = true
     },
+
     xResetCurrentWord() {
       this.state.currentWord = []
       this.state.currentCellIds = []

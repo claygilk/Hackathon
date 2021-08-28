@@ -16,7 +16,7 @@
             </tr>
             
         </table>
-        <button @click="readGrid()" :disabled="!this.$store.state.isGameStarted">Done Spelling</button>
+        <button class="push-btn" @click="readGrid()" :disabled="!this.$store.state.isGameStarted">Done Spelling</button>
     </div>
 </template>
 
@@ -172,7 +172,10 @@ export default {
 
 .filled-square{
     background-color: #fcde65;
-    border: 1px solid black;
+    color: black;
+    font-family: 'VT323', monospace;
+    font-size: 2.5em;
+    font-weight: 500;
     border-radius:10px;
     width: 50px;
     height: 50px;
