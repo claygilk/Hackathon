@@ -1,6 +1,7 @@
 <template>
     <div>
         <table class="grid">
+
             <tr v-for="row in height" :key="row"> 
                 <td 
                 @drop="onDrop($event, tile)"
@@ -20,7 +21,7 @@
         class="push-btn" 
         @click="readGrid()" 
         :disabled="!this.$store.state.isGameStarted||this.$store.state.currentWord.length<3">
-        Done Spelling
+        Done Spelling <font-awesome-icon icon="phone" />
         </button>
     </div>
 </template>
@@ -38,7 +39,9 @@ export default {
             width: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
             allRowsCols: [],
             allWords: [],
-            lastTileId: null
+            lastTileId: null,
+            tries: 0,
+            currentDroppable: []
         }
     },
 
@@ -113,6 +116,8 @@ export default {
             })
 
             this.$store.commit('xReturnWordToHand')
+            this.resetDroppable()
+
         },
         readGrid(){
             this.allRowsCols = []
@@ -149,6 +154,7 @@ export default {
             else {
                 this.undoWord()
             }
+
             this.$store.commit('xResetCurrentWord')
 
         },
@@ -206,10 +212,8 @@ export default {
             }
 
             this.resetDroppable()
-            this.applyDroppaleToAdjacent(this.lastTileId)
-
         },
-        resetDroppable(){
+        clearAllDroppable(){
             console.log('resetDroppable')
             let oldDroppable = document.querySelectorAll('.droppable')
 
@@ -220,29 +224,49 @@ export default {
             })
 
         },
+        resetDroppable(){
+            this.clearAllDroppable()
+            this.currentDroppable = []
+            this.applyDroppaleToAdjacent(this.lastTileId)
+            this.removeDroppableFromFilled()
+        },
         applyDroppaleToAdjacent(currentId){
+            this.currentDroppable.push(currentId)
+            console.log('currentId: ' + currentId)
+            this.tries++
 
+            // get cell ids of adjacent cells
             let adjacentCells = gridReader.getAdjecntCellIds(currentId)
 
             adjacentCells.forEach(id => {
 
-                let tries = 0 
-
                 let cell = document.getElementById(id)
 
-                if (!cell.classList.contains('filled-square')) {
+                if (cell.classList.contains('empty-square')) {
+                    
                     cell.classList.add('droppable')
                 }
                 else {
-                    console.log('applyDroppaleToAdjacent() ' + id)
+                    
+                    if(!this.currentDroppable.includes(id)){
 
-                    if(tries < 15) {
-                        this.applyDroppaleToAdjacent(id)
+                        console.log('applyDroppaleToAdjacent() ' + id)
+                        console.log(cell)
+    
+                        
+                            this.applyDroppaleToAdjacent(id)
+                       
                     }
                 }
-                 tries++
-                 console.log('tries' + tries)
 
+            })
+        },
+        removeDroppableFromFilled(){
+            let filledIds = document.querySelectorAll('.filled-square')
+            console.log(filledIds)
+
+            filledIds.forEach(id => {
+                document.getElementById(id).classList.remove('droppable')
             })
         }
     },
@@ -294,10 +318,10 @@ export default {
 
 }
 
-.latest-tile{
+/* .latest-tile{
   box-shadow:  0px 0px 4px 4px #fc65f4a6;
 
-}
+} */
 
 .droppable{
   box-shadow:  0px 0px 4px 4px #fcde65a6;
