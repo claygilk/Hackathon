@@ -2,20 +2,27 @@
   <div>
     <div class="homepage">
       <h1>Welcome to Scrobble</h1>
+      <div>
       <h1>Gameplay</h1>
       <p>
         "rules that I will write eventually"
       </p>
-      <h2>
+      <h1>
         Development
-      </h2>
+      </h1>
       <p>
         "what we used to make the game"
       </p>
-      <h3>
+      </div>
+      <div>
+      <h1>
         Meet the Engineers
-      </h3>
-      <!-- <img class="profile-pic" src="https://media-exp1.licdn.com/dms/image/C4D03AQG8YbQrpIa-CQ/profile-displayphoto-shrink_800_800/0/1622582128244?e=1635379200&v=beta&t=BTm-VVJ2rQLROtofZOkNKQVUsFmd-nk4kB0-KuYQzuw"> -->
+      </h1>
+      <h2>Jamie Mullins</h2>
+      <img class="jamie-pic" src="../assets/jamiesamazingheadshot.jpg">
+      <h2>Clay Gilkerson</h2>
+      <img class="clay-pic" src="../assets/claysamazingheadshot.jpg">
+      </div>
     </div>
   </div>
 </template>
@@ -41,5 +48,15 @@ div.homepage{
   width: 75vw;
   height: 100vw;
   text-align: center;
+}
+
+.jamie-pic{
+  width: 250px;
+  height: auto;
+}
+
+.clay-pic{
+  width: 250px;
+  height: auto;
 }
 </style>
