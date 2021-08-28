@@ -1,13 +1,14 @@
 <template>
-  <div class="play-display">
-    <button @click="startGame">New Game</button>
+  <div>
+    <div class="play-display">
+      <button @click="startGame">New Game</button>
 
-    <h5>Score: {{ currentScore }}</h5>
-    
-    <GameGrid @place="placeTile(letter)" @doneSpelling="submitWord"/>
+      <h2>Score: {{ currentScore }}</h2>
+      
+      <GameGrid @place="placeTile(letter)" @doneSpelling="submitWord"/>
 
-    <Hand/>
-    
+      <Hand/>
+    </div>
   </div>
 </template>
 
@@ -32,6 +33,7 @@ export default {
   methods: {
     startGame(){
       this.$store.commit('xStartGame')
+      this.$store.commit('xDealHand')
     },
     submitWord(){
       console.log('submitWord()')
@@ -54,12 +56,23 @@ export default {
 </script>
 
 <style>
-.play-display {
-  /* display: grid;
-  grid-template-areas: "filt main ad";
-  grid-template-columns: 17.5rem auto 17.5rem; */
-  background-size: contain;
-  background-image: url("../assets/background2.jpg")
+
+h2{
+  font-family: 'VT323', monospace;
+  font-weight: normal;
+  color: #ffc438;
+  font-size: 2em;
+
+}
+
+.play-display{
+  background-color: #030B12;
+  border-left: 3px solid #34A3CC;
+  border-right: 3px solid #34A3CC;
+  width: 75vw;
+  height: 100vw;
+  text-align: center;
+  /* overflow: auto; */
 }
 
 button {
@@ -76,7 +89,7 @@ button {
   border-radius: 15px;
   box-shadow:  0px 5px #a34587;
   font-family: 'VT323', monospace;
-
+  margin-top: 50px;
 }
 
 /* button:hover {background-color: #e642b4} */

@@ -56,9 +56,10 @@ export default {
             console.log(this.$store.state.currentCellIds)
 
             this.$store.state.currentCellIds.forEach(cell => {
-                console.log('clearing ' + cell)
                 let toClear = document.getElementById(cell)
                 toClear.innerHTML = '&nbsp;'
+                toClear.classList.add('empty-square')
+                toClear.classList.remove('filled-square')
             })
 
             this.$store.commit('xReturnWordToHand')
@@ -166,7 +167,7 @@ export default {
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
-    background-color: #55bcfb;
+    background-color: #34A3CC;
 }
 
 .filled-square{

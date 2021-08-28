@@ -14,6 +14,9 @@
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+*{
+  font-family: 'VT323', monospace;
+}
 #nav{
   background: #34A3CC;
   color: white;
@@ -21,6 +24,7 @@
   top: 0;
   left: 0;
   right: 0;
+  width: 100vw;
   height: 75px;
   font-family: 'VT323', monospace;
   font-size: 2em;
@@ -33,8 +37,13 @@
 
 #view{
   margin-top: 75px;
-  width: 100vw;
-  height: 100vh;
+  // width: 100vw;
+  // height: 100vh;
+  width: 100%;
+  height: 140vh;
+  background-size: auto;
+  background-image: url("./assets/arcadepattern.png");
+  z-index: -1;
 }
 
 

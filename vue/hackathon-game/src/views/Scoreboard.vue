@@ -1,7 +1,9 @@
 <template>
   <div id="view">
-    <h1>Leaderboards</h1>
-    <Scores/>
+    <div class="scoreboard">
+      <h1>Leaderboards</h1>
+      <Scores/>
+    </div>
   </div>
 </template>
 
@@ -26,13 +28,23 @@ export default {
   align-items: center;
   background-color: #303134;
   color: white;
-
-
 }
 
 h1{
   font-family: 'VT323', monospace;
   font-size: 2.5em;
+}
+
+div.scoreboard{
+  background-color: #030B12;
+  border-left: 3px solid #34A3CC;
+  border-right: 3px solid #34A3CC;
+  width: 75vw;
+  height: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
 }
 
 </style>
