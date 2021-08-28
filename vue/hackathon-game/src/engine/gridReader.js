@@ -85,7 +85,12 @@ const createRowIds = (rows, cols) => {
     return rowArray
 }
 
-const getAdjecntCellIds = (row, col) => {
+const getAdjecntCellIds = (id) => {
+    let dropId = id.split('x')
+
+    let row = parseInt(dropId[0],10) 
+    let col = parseInt(dropId[1],10) 
+
     let cellIds = []
 
     for (let r = row - 1 ; r < row + 2; r++) {
@@ -95,15 +100,15 @@ const getAdjecntCellIds = (row, col) => {
             if (r === row || c === col) {
                 if(r >= 1 && c >= 1 && r <= 15 && c <= 15) {
 
-                    cellIds.push(r + 'x' + c) 
+                    if (r + c != row + col) {
+                        
+                        cellIds.push(r + 'x' + c) 
+                    }
                 }
             }
         }
     }
-
-    console.log(cellIds)
     return cellIds
-
 }
 
 module.exports = {

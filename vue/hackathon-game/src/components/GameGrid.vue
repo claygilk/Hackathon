@@ -37,7 +37,8 @@ export default {
             height: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
             width: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
             allRowsCols: [],
-            allWords: []
+            allWords: [],
+            lastTileId: null
         }
     },
 
@@ -57,6 +58,17 @@ export default {
                 cell.classList.remove('empty-square')
                 cell.classList.add('filled-square')
             }
+
+            let startingDroppable = []
+
+            this.$store.state.starterTileIds.forEach(id => {
+                let adjectCells = gridReader.getAdjecntCellIds(id)
+                startingDroppable = startingDroppable.concat(adjectCells)
+            })
+
+            startingDroppable.forEach(id => {
+                document.getElementById(id).classList.add('droppable')
+            })
         },
         scoreGrid(){
             console.log('scoreGrid()')
@@ -179,8 +191,59 @@ export default {
             return rowArray
         },
         onDrop(event){
-            const letter = event.dataTransfer.getData('letter')
-            this.placeTile()
+            
+            if(event.target.classList.contains('droppable')){
+                
+                this.placeTile()
+
+                let cellIds = gridReader.getAdjecntCellIds(event.target.id)
+    
+                cellIds.forEach(id => {
+                    document.getElementById(id).classList.add('droppable')
+                })
+
+                this.lastTileId = event.target.id
+            }
+
+            this.resetDroppable()
+            this.applyDroppaleToAdjacent(this.lastTileId)
+
+        },
+        resetDroppable(){
+            console.log('resetDroppable')
+            let oldDroppable = document.querySelectorAll('.droppable')
+
+            console.log('oldDroppable', + oldDroppable)
+
+            oldDroppable.forEach(cell => {
+                cell.classList.remove('droppable')
+            })
+
+        },
+        applyDroppaleToAdjacent(currentId){
+
+            let adjacentCells = gridReader.getAdjecntCellIds(currentId)
+
+            adjacentCells.forEach(id => {
+
+                let tries = 0 
+
+                let cell = document.getElementById(id)
+
+                if (!cell.classList.contains('filled-square')) {
+                    cell.classList.add('droppable')
+                }
+                else {
+                    console.log('applyDroppaleToAdjacent() ' + id)
+
+                    if(tries < 15) {
+                        this.applyDroppaleToAdjacent(id)
+                    }
+                }
+                 tries++
+                 console.log('tries' + tries)
+
+            })
         }
     },
 
@@ -232,6 +295,11 @@ export default {
 }
 
 .latest-tile{
+  box-shadow:  0px 0px 4px 4px #fc65f4a6;
+
+}
+
+.droppable{
   box-shadow:  0px 0px 4px 4px #fcde65a6;
 
 }
