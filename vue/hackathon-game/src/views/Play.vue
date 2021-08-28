@@ -9,7 +9,8 @@
       <GameGrid @place="placeTile(letter)" @doneSpelling="submitWord"/>
 
       <Hand/>
-      <GameOver @close="closeGameOver" v-if="gameOver"/>
+
+      <GameOver :playerScore="currentScore" @close="closeGameOver" v-if="gameOver"/>
     </div>
   </div>
 </template>
@@ -19,6 +20,7 @@ import GameGrid from '../components/GameGrid.vue'
 import Hand from '../components/Hand.vue'
 import scoreCalculator from '../engine/scoreCalculator'
 import GameOver from '../components/GameOver.vue'
+import scoreService from '../services/scoreService'
 
 export default {
   components: {
@@ -56,7 +58,8 @@ export default {
       
       this.$store.commit('xResetCurrentWord')
     },
-    closeGameOver(){
+    closeGameOver(playerInitials){
+      scoreService.addScore(playerInitials, this.currentScore)
       this.gameOver = false
     }
   },

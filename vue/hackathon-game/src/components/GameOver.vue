@@ -2,10 +2,18 @@
   <div class="modal-backdrop">
       <div class="modal">
           <h1>Game Over</h1>
+          <p>YOUR SCORE: {{playerScore}}</p>
           <form>
             <label for="initals">ENTER YOUR INITIALS</label>
             <div>
-                <input id="initials" type="text" maxlength="3" placeholder="AAA">
+                <input 
+                id="initials" 
+                type="text" 
+                maxlength="3" 
+                placeholder="AAA" 
+                autocomplete="off"
+                v-model="initals"
+                onkeypress="return /[a-z]/i.test(event.key)">
             </div>
             <button id="done" @click.prevent="close">DONE</button>
           </form>
@@ -15,36 +23,41 @@
 
 <script>
 export default {
-name: 'GameOver',
-    methods: {
-      close() {
-        this.$emit('close');
-      },
+  name: 'GameOver',
+  props: ['playerScore'],
+  data() {
+    return{
+      initals: null
     }
+  },
+  methods: {
+    close() {
+      this.$emit('close', this.initals);
+    },
+  }
 }
 </script>
 
 
 <style scoped>
-    button{
-        border: none;
-        background-color: #030B12;
-        color:#ffc438;
-        font-size: 1.5em;
+  button{
+    border: none;
+    background-color: #030B12;
+    color:#ffc438;
+    font-size: 1.5em;
+  }
 
-
-    }
-
-    input{
-        color:#ffc438;
-        background-color: #030B12;
-        border: none;
-        font-size: 1.5em;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        width: 4em;
-        text-align: center;
-    }
+  input{
+    color:#ffc438;
+    background-color: #030B12;
+    border: none;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 4em;
+    text-align: center;
+    text-transform:uppercase;
+  }
 
   .modal-backdrop {
     position: fixed;
@@ -54,6 +67,7 @@ name: 'GameOver',
     right: 0;
     background-color: rgba(0, 0, 0, 0.479);
   }
+
   .modal {
     background: #030B12;
     box-shadow: 0px 0px 4px 4px #ffc33863;
@@ -69,5 +83,14 @@ name: 'GameOver',
     margin-right: auto;
     border-radius: 5px;
     color: #ffc438;
+  }
+
+  ::placeholder { 
+    color: #ffc438;
+    opacity: 1; 
+  }
+
+  input:focus{
+    outline: none;
   }
 </style>
