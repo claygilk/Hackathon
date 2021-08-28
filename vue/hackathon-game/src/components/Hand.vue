@@ -98,6 +98,7 @@ li.tile {
     font-weight: 500;
     display: flex;
     align-items: center;
+    cursor: grab;
 }
 div.button-lives{
     display: flex;

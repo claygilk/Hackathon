@@ -16,7 +16,12 @@
             </tr>
             
         </table>
-        <button class="push-btn" @click="readGrid()" :disabled="!this.$store.state.isGameStarted">Done Spelling</button>
+        <button 
+        class="push-btn" 
+        @click="readGrid()" 
+        :disabled="!this.$store.state.isGameStarted||this.$store.state.currentWord.length<3">
+        Done Spelling
+        </button>
     </div>
 </template>
 
@@ -81,6 +86,7 @@ export default {
 
             cell.classList.remove('empty-square')
             cell.classList.add('filled-square')
+            cell.classList.add('latest-tile')
         },
         undoWord(){
             console.log('undoWord()')
@@ -174,8 +180,6 @@ export default {
         },
         onDrop(event){
             const letter = event.dataTransfer.getData('letter')
-            console.log(event)
-            console.log(letter)
             this.placeTile()
         }
     },
@@ -224,6 +228,11 @@ export default {
     border-spacing: 5px;
     display: grid;
     justify-content: center;
+
+}
+
+.latest-tile{
+  box-shadow:  0px 0px 4px 4px #fcde65a6;
 
 }
 </style>

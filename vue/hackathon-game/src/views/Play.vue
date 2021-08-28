@@ -71,7 +71,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 h2{
   font-family: 'VT323', monospace;
@@ -107,6 +107,12 @@ button.push-btn {
   box-shadow:  0px 5px #a34587;
   font-family: 'VT323', monospace;
   margin-top: 50px;
+
+  &:disabled{
+    box-shadow: 0 2px rgba(243, 117, 195, 0.575);
+    transform: translateY(4px);
+    cursor: not-allowed;
+  }
 }
 
 /* button:hover {background-color: #e642b4} */
