@@ -89,8 +89,20 @@ const getAdjecntCellIds = (row, col) => {
     let cellIds = []
 
     for (let r = row - 1 ; r < row + 2; r++) {
-        console.log(r)
+
+        for (let c = col - 1; c < col + 2; c++) {
+
+            if (r === row || c === col) {
+                if(r > 1 && c > 1 && r < 15 && c < 15){
+
+                    cellIds.push(r + 'x' + c) 
+                }
+            }
+        }
     }
+
+    console.log(cellIds)
+    return cellIds
 
 }
 

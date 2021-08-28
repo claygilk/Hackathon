@@ -72,3 +72,14 @@ describe('Letter array with unreal word fails', () => {
     })
 
 })
+
+describe('Generate ids of all adjacent cells', () => {
+
+    it('3x3 returns correct ids', done => {
+
+        let ids = gridReader.getAdjecntCellIds(3,3)
+        console.log(ids)
+        assert(ids === [ '2x3', '3x2', '3x3', '3x4', '4x3' ])
+        done()
+    })
+})
