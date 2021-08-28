@@ -93,7 +93,7 @@ const getAdjecntCellIds = (row, col) => {
         for (let c = col - 1; c < col + 2; c++) {
 
             if (r === row || c === col) {
-                if(r > 1 && c > 1 && r < 15 && c < 15){
+                if(r >= 1 && c >= 1 && r <= 15 && c <= 15) {
 
                     cellIds.push(r + 'x' + c) 
                 }
