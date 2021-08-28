@@ -24,8 +24,8 @@
       <img class="clay-pic" src="../assets/claysamazingheadshot.jpg">
       <p class="clayp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae maiores neque vel ab dolore dicta aliquam laboriosam dignissimos voluptas harum amet, eligendi laborum quas aperiam sequi nemo delectus, necessitatibus itaque!</p>
       <ul>
-      <li><a href="https://github.com/claygilk">github</a></li>
-      <li><a href="https://www.linkedin.com/in/clay-gilkerson/">LinkedIn</a></li>
+      <li><i class="fab fa-github-square"></i><a href="https://github.com/claygilk">github</a></li>
+      <li><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/clay-gilkerson/">LinkedIn</a></li>
       </ul>
       </div>
       <div>
@@ -33,8 +33,8 @@
       <img class="jamie-pic" src="../assets/jamiesamazingheadshot.jpg">
       <p class="jamiep">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus beatae quis iure enim eum sunt animi sint earum, suscipit ipsa hic culpa incidunt quam. Quam vero voluptate unde ex aspernatur.</p>
       <ul>
-      <li><a href="https://github.com/jamiemullins1">github</a></li>
-      <li><a href="www.linkedin.com/in/jamie-mullins">LinkedIn</a></li>
+      <li><i class="fab fa-github-square"></i><a href="https://github.com/jamiemullins1">github</a></li>
+      <li><i class="fab fa-linkedin"></i><a href="www.linkedin.com/in/jamie-mullins">LinkedIn</a></li>
       </ul>
       </div>
       </div>
