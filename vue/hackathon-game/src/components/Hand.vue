@@ -1,20 +1,30 @@
 <template>
   <div >
-      <ul class="hand">
-          <!-- <div v-for="(item, i) in items" :key="i"></div> -->
-          <li 
-          @dragstart="startDrag($event, tile)" 
-          @click="selectTile(tile)" 
-          draggable="true" 
-          class="tile" 
-          v-for="(tile, i) in hand" :key="tile + i"
-          >
-          <div>{{ tile }}</div>
-          </li>
-      </ul>
-
-      <!-- <button @click="drawMoreTiles" :disabled="!this.$store.state.isGameStarted">Draw</button> -->
-      <button class="push-btn" @click="newHand" :disabled="!this.$store.state.isGameStarted||this.$store.state.lifelines!==0">Get New Hand</button>
+    <ul class="hand">
+        <!-- <div v-for="(item, i) in items" :key="i"></div> -->
+        <li 
+        @dragstart="startDrag($event, tile)" 
+        @click="selectTile(tile)" 
+        draggable="true" 
+        class="tile" 
+        v-for="(tile, i) in hand" :key="tile + i"
+        >
+        <div>{{ tile }}</div>
+        </li>
+    </ul>
+    <div class="button-lives">
+        <div>
+            <button 
+            class="push-btn" 
+            @click="newHand" 
+            :disabled="!this.$store.state.isGameStarted||this.$store.state.lifeLines===0">
+            Get New Hand
+            </button>
+        </div>
+        <div>
+            <p>Lives: {{this.$store.state.lifeLines}}</p>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -32,8 +42,10 @@ export default {
             this.$store.commit('xDealHand')
         },
         newHand(){
+            console.log('newHand()')
             this.$store.commit('xEmptyHand')
             this.$store.commit('xDealHand')
+            this.$store.state.lifeLines--
         },
         startDrag(event, tile){
             event.dataTransfer.dropEffect = 'move'
@@ -86,5 +98,16 @@ li.tile {
     font-weight: 500;
     display: flex;
     align-items: center;
+    cursor: grab;
+}
+div.button-lives{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+p{
+    color: #fcde65;
+    font-size: 2em;
 }
 </style>

@@ -85,9 +85,19 @@ const createRowIds = (rows, cols) => {
     return rowArray
 }
 
+const getAdjecntCellIds = (row, col) => {
+    let cellIds = []
+
+    for (let r = row - 1 ; r < row + 2; r++) {
+        console.log(r)
+    }
+
+}
+
 module.exports = {
     letterArrayToStringArray,
     createColumnIds,
     createRowIds,
     checkRowOrColumn,
+    getAdjecntCellIds
 }

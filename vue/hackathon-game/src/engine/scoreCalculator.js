@@ -34,9 +34,13 @@ scores.set('Q', 10)
 scores.set('Z', 10)
 
 
-const calcWordScore = (letterArray) => {
+const calcWordScore = (word) => {
+    
+    let letterArray = Array.from(word)
+    console.log('letterArray' + letterArray)
 
     let total = 0
+
 
     letterArray.forEach(letter => {
         points = scores.get(letter)

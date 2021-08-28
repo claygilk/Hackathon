@@ -10,19 +10,25 @@
                 v-for="column in width" 
                 :key="column" 
                 :id="row + 'x' + column"
-                @click="placeTile(row + 'x' + column)"
                 ></td>
+                <!-- @click="placeTile(row + 'x' + column)" -->
                 <!-- &nbsp; -->
             </tr>
             
         </table>
-        <button class="push-btn" @click="readGrid()" :disabled="!this.$store.state.isGameStarted">Done Spelling</button>
+        <button 
+        class="push-btn" 
+        @click="readGrid()" 
+        :disabled="!this.$store.state.isGameStarted||this.$store.state.currentWord.length<3">
+        Done Spelling
+        </button>
     </div>
 </template>
 
 <script>
 import gridReader from '../engine/gridReader'
 import lookupService from '../services/lookupService'
+import scoreCalculator from '../engine/scoreCalculator'
 
 export default {
     
@@ -36,6 +42,37 @@ export default {
     },
 
     methods: {
+        placeStarterTiles(){
+            console.log('placeStarterTiles()')
+
+            for (let i = 0; i < this.$store.state.starterTiles.length; i++) {
+                
+                let letter = this.$store.state.starterTiles[i]
+                
+                let cellId = this.$store.state.starterTileIds[i]
+
+                let cell = document.getElementById(cellId)
+
+                cell.innerText = letter
+                cell.classList.remove('empty-square')
+                cell.classList.add('filled-square')
+            }
+        },
+        scoreGrid(){
+            console.log('scoreGrid()')
+
+            let totalScore = 0
+
+            this.allWords.forEach(word => {
+
+                let wordScore = scoreCalculator.calcWordScore(word)
+                totalScore += wordScore
+            })
+
+            console.log(totalScore)
+            
+            this.$store.state.currentScore = totalScore
+        },
         placeTile(tileId) {
             let cell = event.target
             
@@ -46,9 +83,10 @@ export default {
             cell.innerText = letter 
             
             this.$store.commit('xPlaceTile', {letter, cellId})
+
             cell.classList.remove('empty-square')
             cell.classList.add('filled-square')
-            console.log(cell)
+            cell.classList.add('latest-tile')
         },
         undoWord(){
             console.log('undoWord()')
@@ -73,8 +111,6 @@ export default {
 
             let rows = this.readRows()
             this.allRowsCols = this.allRowsCols.concat(rows)
-
-            let allWords = []
 
             this.allRowsCols.forEach(letterArray => {
                 let wordArray = gridReader.letterArrayToStringArray(letterArray)
@@ -144,8 +180,6 @@ export default {
         },
         onDrop(event){
             const letter = event.dataTransfer.getData('letter')
-            console.log(event)
-            console.log(letter)
             this.placeTile()
         }
     },
@@ -153,6 +187,12 @@ export default {
     created(){
         this.emitter.on('undoWord', () => {
             this.undoWord()
+        }),
+        this.emitter.on('startGame', () => {
+            this.placeStarterTiles()
+        })
+        this.emitter.on('doneSpelling', () => {
+            this.scoreGrid()
         })
     }
 }
@@ -188,6 +228,11 @@ export default {
     border-spacing: 5px;
     display: grid;
     justify-content: center;
+
+}
+
+.latest-tile{
+  box-shadow:  0px 0px 4px 4px #fcde65a6;
 
 }
 </style>

@@ -10,7 +10,7 @@ export default {
         console.log('scoreService.addScore()')
 
         let record = {
-            username: player,
+            username: player.toUpperCase(),
             point_total: score
         }
 

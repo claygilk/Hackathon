@@ -11,13 +11,15 @@ export default createStore({
     currentWord: [],
     currentCellIds: [],
     lifeLines: 3,
-    isGameStarted: false
+    isGameStarted: false,
+    starterTiles: [],
+    starterTileIds: [],
+    currentScore: 0
   },
   mutations: {
     xStartGame(){
       this.state.isGameStarted = true
     },
-
     xResetCurrentWord() {
       this.state.currentWord = []
       this.state.currentCellIds = []
@@ -48,6 +50,21 @@ export default createStore({
         this.state.playerHand1.push(letter)
       })
     },
+    xDrawStarterTiles(){
+      if (this.state.deck.length > 0) {
+        // get random index from deck
+        let rand = _.random(0, this.state.deck.length - 1)
+
+        // get value of tile at random index
+        let tileToAdd = this.state.deck[rand]
+
+        // remove tile from deck
+        this.state.deck.splice(rand, 1)
+
+        // add new tile to player hand
+        this.state.starterTiles.push(tileToAdd)
+      }
+    },
     xDealHand() {
       
       while(this.state.playerHand1.length < 10){
@@ -59,11 +76,12 @@ export default createStore({
           // get value of tile at random index
           let tileToAdd = this.state.deck[rand]
   
+          // remove tile from deck
+          this.state.deck.splice(rand, 1)
+          
           // add new tile to player hand
           this.state.playerHand1.push(tileToAdd)
   
-          // remove tile from deck
-          this.state.deck.splice(rand, 1)
         } else {
           return
         }
