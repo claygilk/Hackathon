@@ -77,17 +77,25 @@ describe('Generate ids of all adjacent cells', () => {
 
     it('3x3 returns correct ids', done => {
 
-        let ids = gridReader.getAdjecntCellIds(3,3)
+        let ids = gridReader.getAdjecntCellIds('3x3')
 
-        assert(_.isEqual(ids , [ '2x3', '3x2', '3x3', '3x4', '4x3' ]))
+        assert(_.isEqual(ids , [ '2x3', '3x2', '3x4', '4x3' ]))
         done()
     })
 
     it('1x1 returns correct ids', done => {
 
-        let ids = gridReader.getAdjecntCellIds(1,1)
+        let ids = gridReader.getAdjecntCellIds("1x1")
         
-        assert(_.isEqual(ids , [ '1x1', '1x2', '2x1' ]))
+        assert(_.isEqual(ids , [ '1x2', '2x1' ]))
+        done()
+    })
+
+    it('8x1 returns correct ids', done => {
+
+        let ids = gridReader.getAdjecntCellIds("8x1")
+        
+        assert(_.isEqual(ids , [ '7x1', '8x2', '9x1' ]))
         done()
     })
 })
