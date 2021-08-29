@@ -5,7 +5,7 @@ import Play from '../views/Play.vue'
 
 const routes = [
   {
-    path: '/Home',
+    path: '/',
     name: 'Home',
     component: Home
   },
