@@ -14,11 +14,23 @@ export default createStore({
     isGameStarted: false,
     starterTiles: [],
     starterTileIds: [],
-    currentScore: 0
+    currentScore: 0,
+    currentUserInitials: 'AAA'
   },
   mutations: {
     xStartGame(){
       this.state.isGameStarted = true
+    },
+    xResetGame(){
+      this.state.isGameStarted = false
+      this.state.playerHand1 = []
+      this.state.lifeLines = 3
+      this.state.starterTiles = []
+      this.state.currentScore = 0
+      this.state.currentWord = []
+      this.state.selectedTile = null
+      this.state.pickup = false
+
     },
     xResetCurrentWord() {
       this.state.currentWord = []
@@ -88,6 +100,7 @@ export default createStore({
       }
     },
     xCreateDeck() {
+      this.state.deck = []
       console.log('Creating deck...')
 
       for (let i = 0; i < 9; i++){

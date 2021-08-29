@@ -5,17 +5,17 @@ import Play from '../views/Play.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/Home',
     name: 'Home',
     component: Home
   },
   {
-    path: '/',
+    path: '/Scoreboard',
     name: 'Scoreboard',
     component: Scoreboard
   },
   {
-    path: '/',
+    path: '/Play',
     name: 'Play',
     component: Play
   },

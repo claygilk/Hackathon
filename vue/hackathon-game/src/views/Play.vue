@@ -62,11 +62,17 @@ export default {
     },
     closeGameOver(playerInitials){
       scoreService.addScore(playerInitials, this.$store.state.currentScore)
-      this.gameOver = false
+        .then(() => {
+          console.log('then block')
+          this.$router.push('Scoreboard')
+          this.gameOver = false
+
+        })
     }
   },
   created() {
     this.$store.commit('xCreateDeck')
+    this.$store.commit('xResetGame')
   }
 }
 </script>

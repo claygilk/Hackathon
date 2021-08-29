@@ -1,10 +1,21 @@
 <template>
   <div id="scores">
-    <div id="heading">
-      <h2>Top 10</h2>
+
+    <div class="heading">
+      <h2>TOP 10 HIGHSCORES</h2>
     </div>
-    <ul>
+    <ul class="score-list">
       <li v-for="score in highScores" :key="score._id"> 
+        <div>{{score.username}}</div>
+        <div>{{score.point_total}}</div>
+      </li>
+    </ul>
+
+    <div class="heading">
+      <h2>YOUR TOP SCORES</h2>
+    </div>
+    <ul class="score-list">
+      <li v-for="score in userScores" :key="score._id"> 
         <div>{{score.username}}</div>
         <div>{{score.point_total}}</div>
       </li>
@@ -18,13 +29,22 @@ import scoreService from '../services/scoreService'
 export default {
   data() {
     return {
-      highScores: null
+      highScores: null,
+      userScores: null
     }
   },
   created() {
     scoreService.getScores()
       .then(response => {
         this.highScores = response.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+    scoreService.getUserScores(this.$store.state.currentUserInitials)
+      .then(response => {
+        this.userScores = response.data
       })
       .catch(err => {
         console.log(err)
@@ -39,7 +59,7 @@ export default {
   width: 25vw;
 }
 
-#heading{
+.heading{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,5 +75,9 @@ li{
   &:hover{
     color: #ffc438
   }
+}
+
+ul.score-list {
+  padding: 0;
 }
 </style>

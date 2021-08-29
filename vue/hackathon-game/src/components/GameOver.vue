@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     close() {
-      this.$emit('close', this.initals);
+      this.$store.state.currentUserInitials = this.initals.toUpperCase()
+      this.$emit('close', this.initals)
     },
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="view">
     <div class="scoreboard">
-      <h1>Leaderboards</h1>
+      <h1>LEADERBOARDS</h1>
       <Scores/>
     </div>
   </div>
@@ -33,6 +33,7 @@ export default {
 h1{
   font-family: 'VT323', monospace;
   font-size: 2.5em;
+  font-weight: normal;
 }
 
 div.scoreboard{

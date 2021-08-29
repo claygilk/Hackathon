@@ -6,6 +6,11 @@ export default {
         return axios.get('https://scoresv1-atfvujdraq-uc.a.run.app/scores')
     },
 
+    getUserScores(initials){
+        console.log('scoreService.getUserScores()')
+        return axios.get('https://scoresv1-atfvujdraq-uc.a.run.app/scores/' + initials)
+    },
+
     addScore(player, score){
         console.log('scoreService.addScore()')
 
