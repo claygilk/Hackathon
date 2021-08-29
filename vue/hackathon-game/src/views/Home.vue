@@ -4,9 +4,13 @@
       <h1>Welcome to Scrobble</h1>
       <div>
       <h1>Gameplay</h1>
-      <p>
-        "rules that I will write eventually"
-      </p>
+      <div class="rules">
+      <h3>1. The objective of Scrobble is to spell as many words as you can. Each letter tile has a point value assigned to it, like in Scrabble. The more words you spell, the more points you earn.</h3>
+      <h3>2. To spell a word, click-and-drag a letter tile from your hand to a square on the board. You can only place a tile on an empty square that is vertically or horizontally adjacent to an already placed letter tile. When you start the game, 5 random letter tiles will be placed on the board to get you started.</h3>
+      <h3>3. There are some restrictions with spelling words: You can only spell words from left-to-right, or top-to-bottom. The minimum length for a word is 3 letters.</h3>
+      <h3>4. If you get stuck, and can't spell anymore words you can click the "Get New Hand" button, to return your tiles to the deck and draw 10 more random tiles. Drawing a new hand consume a life, and you only get 3 lives per game. When you run out of lives you can no longer refresh you hand.</h3>
+      <h3>5. When you think you can no longer spell anymore words, press the "Give Up" button. This will end the game and prompt you to enter your initals for a chance to make it onto the leaderboards.</h3>
+      </div>
       <h1>
         Development
       </h1>
@@ -22,19 +26,19 @@
         <div>
       <h2>Clay Gilkerson</h2>
       <img class="clay-pic" src="../assets/claysamazingheadshot.jpg">
-      <p class="clayp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae maiores neque vel ab dolore dicta aliquam laboriosam dignissimos voluptas harum amet, eligendi laborum quas aperiam sequi nemo delectus, necessitatibus itaque!</p>
-      <ul>
-      <li><i class="fab fa-github-square"></i><a href="https://github.com/claygilk">github</a></li>
-      <li><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/clay-gilkerson/">LinkedIn</a></li>
+      <p class="clayp">Aspiring developer with a passion for learning new technologies and solving interesting problems. Experienced with C#/.NET and Vue.js. Currently learning Node.js and MongoDB.</p>
+      <ul class="social-links">
+      <li><i class="fab fa-github-square"></i><a href="https://github.com/claygilk"></a></li>
+      <li><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/clay-gilkerson/"></a></li>
       </ul>
       </div>
       <div>
       <h2>Jamie Mullins</h2>
       <img class="jamie-pic" src="../assets/jamiesamazingheadshot.jpg">
-      <p class="jamiep">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus beatae quis iure enim eum sunt animi sint earum, suscipit ipsa hic culpa incidunt quam. Quam vero voluptate unde ex aspernatur.</p>
-      <ul>
-      <li><i class="fab fa-github-square"></i><a href="https://github.com/jamiemullins1">github</a></li>
-      <li><i class="fab fa-linkedin"></i><a href="www.linkedin.com/in/jamie-mullins">LinkedIn</a></li>
+      <p class="jamiep">Motivated software developer with 5+ years of management experience in various work environments. Always eager to learn and create new things.</p>
+      <ul class="social-links">
+      <li><i class="fab fa-github-square"></i><a href="https://github.com/jamiemullins1"></a></li>
+      <li><i class="fab fa-linkedin"></i><a href="www.linkedin.com/in/jamie-mullins"></a></li>
       </ul>
       </div>
       </div>
@@ -69,12 +73,17 @@ div.homepage{
 .profile{
   display: flex;
   justify-content: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
+
+// .rules{
+//   flex-shrink: 6;
+// }
 
 .jamie-pic{
   width: 250px;
   height: auto;
+  border-radius: 50%;
 }
 .jamiep{
   font-size: 1rem;
@@ -83,9 +92,16 @@ div.homepage{
 .clay-pic{
   width: 250px;
   height: auto;
+  border-radius: 50%;
 }
 
 .clayp{
   font-size: 1rem;
+}
+
+.social-links{
+  display: flex;
+  justify-content: space-evenly;
+  //justify-content: flex-start;
 }
 </style>
