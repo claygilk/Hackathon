@@ -107,7 +107,7 @@ div.button-lives{
 }
 
 p{
-    color: #fcde65;
+    color: #ffc438;
     font-size: 2em;
 }
 </style>
