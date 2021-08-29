@@ -30,7 +30,7 @@
         <div>
           <h2>Clay Gilkerson</h2>
           <img class="clay-pic" src="../assets/claysamazingheadshot.jpg">
-          <p class="clayp">Aspiring developer with a passion for learning new technologies and solving interesting problems. Experienced with C#/.NET and Vue.js. Currently learning Node.js and MongoDB.</p>
+          <p class="clayp">Clay is an aspiring developer with a passion for learning new technologies and solving interesting problems. He is experienced with C#/.NET and Vue.js, and Currently exploring Node.js and MongoDB.</p>
           <ul class="social-links">
             <li><i class="fab fa-github-square"></i><a href="https://github.com/claygilk"></a></li>
             <li><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/clay-gilkerson/"></a></li>
@@ -39,7 +39,7 @@
         <div>
           <h2>Jamie Mullins</h2>
           <img class="jamie-pic" src="../assets/jamiesamazingheadshot.jpg">
-          <p class="jamiep">Motivated software developer with 5+ years of management experience in various work environments. Always eager to learn and create new things.</p>
+          <p class="jamiep">Jamie is a motivated software developer with 5+ years of management experience in various work environments. She is always eager to learn and create new things.</p>
           <ul class="social-links">
             <li><i class="fab fa-github-square"></i><a href="https://github.com/jamiemullins1"></a></li>
             <li><i class="fab fa-linkedin"></i><a href="www.linkedin.com/in/jamie-mullins"></a></li>
