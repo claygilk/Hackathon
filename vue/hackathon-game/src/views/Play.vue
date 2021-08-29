@@ -21,7 +21,6 @@ import Hand from '../components/Hand.vue'
 import tileGenerator from '../engine/tileGenerator'
 import GameOver from '../components/GameOver.vue'
 import scoreService from '../services/scoreService'
-import Rules from '../components/Rules.vue'
 
 export default {
   components: {
