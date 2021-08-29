@@ -14,8 +14,12 @@
       <h1 class="development">
         Development
       </h1>
+      <h3>In collaboration with <a href="https://mintbean.io/meets?sort=upcoming"><u>mintbean</u></a></h3>
       <h3>
-        "what we used to make the game"
+        Front-End: We used Vue.js and CSS to (fairly) easily organize and style our pages.
+      </h3>
+      <h3>
+        Back-End: We used Node.js, Express, and MongoDB because it was quick to set up and easy to deploy.
       </h3>
       </div>
       <div>
@@ -81,6 +85,12 @@ div.homepage{
 }
 
 div.rules>h3{
+  &:hover{
+    color: #ffc438;
+  }
+}
+
+div.dev>h3{
   &:hover{
     color: #ffc438;
   }
