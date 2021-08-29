@@ -38,8 +38,10 @@ h1{
 
 div.scoreboard{
   background-color: #030B12;
-  border-left: 3px solid #34A3CC;
-  border-right: 3px solid #34A3CC;
+  // border-left: 3px solid #34A3CC;
+  // border-right: 3px solid #34A3CC;
+  box-shadow:  0px 0px 4px 4px #34a3cca9;
+
   width: 75vw;
   height: 100vw;
   display: flex;

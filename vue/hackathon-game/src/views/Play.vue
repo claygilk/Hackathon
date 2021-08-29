@@ -89,7 +89,7 @@ h2{
 
 .play-display{
   background-color: #030B12;
-  border-left: 1px solid #34A3CC;
+
   box-shadow:  0px 0px 4px 4px #34a3cca9;
   /* border-right: 0px solid #34A3CC; */
   width: 75vw;
