@@ -312,7 +312,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
 .empty-square{
     border: 1px solid black;
     border-radius:10px;
@@ -322,14 +323,18 @@ export default {
     text-align: center;
     justify-content: center;
     background-color: #030B12;
-    box-shadow:  0px 0px 3px 3px #34a3ccea;
-
+    box-shadow: inset  0px 0px 3px 3px #34a3ccea;
+    &:hover{
+        box-shadow: inset 0px 0px 5px 5px #55bee4ea;
+    }
 }
 
 .filled-square{
-    background-color: #fcde65;
-    /* box-shadow:  0px 0px 3px 3px #fcde65ea; */
-    color: black;
+    // background-color: #fcde65;
+    // color: black;
+    color: #ffc438;
+    text-shadow:  2px 2px 5px #ffc338ab;
+    box-shadow: inset 0px 0px 3px 3px #fcde65ea;
     font-family: 'VT323', monospace;
     font-size: 2.5em;
     font-weight: 500;
@@ -339,22 +344,18 @@ export default {
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
+
+}
+.filled-square:hover{
+    text-shadow: 3px 3px 6px #ffd268ab;
+    box-shadow: inset  0px 0px 4px 4px #f8df7dea;
 }
 
 .grid{
-    border-spacing: 5px;
+    border-spacing: 2.5px;
     display: grid;
     justify-content: center;
 
 }
 
-/* .latest-tile{
-  box-shadow:  0px 0px 4px 4px #fc65f4a6;
-
-} */
-
-/* .droppable{
-  box-shadow:  0px 0px 4px 4px #fcde65a6;
-
-} */
 </style>
