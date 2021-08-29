@@ -2,7 +2,7 @@
   <div id="scores">
 
     <div class="heading">
-      <h2>TOP 10 HIGHSCORES</h2>
+      <h2>Top 10 Highscores</h2>
     </div>
     <ul class="score-list">
       <li v-for="score in highScores" :key="score._id"> 
@@ -12,7 +12,18 @@
     </ul>
 
     <div class="heading">
-      <h2>YOUR TOP SCORES</h2>
+      <h2>Top Scores For
+        <form @submit.prevent="getScores">
+          <input 
+          id="initials" 
+          type="text" 
+          maxlength="3" 
+          autocomplete="off"
+          v-model="initials"
+          onkeypress="return /[a-z]/i.test(event.key)"
+          >
+        </form>
+      </h2>
     </div>
     <ul class="score-list">
       <li v-for="score in userScores" :key="score._id"> 
@@ -30,30 +41,37 @@ export default {
   data() {
     return {
       highScores: null,
-      userScores: null
+      userScores: null,
+      initials: 'AAA',
     }
   },
   created() {
-    scoreService.getScores()
-      .then(response => {
-        this.highScores = response.data
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    this.getScores()
+  },
+  methods:{
+    getScores(){
+      scoreService.getScores()
+        .then(response => {
+          this.highScores = response.data
+        })
+        .catch(err => {
+          console.log(err)
+        })
 
-    scoreService.getUserScores(this.$store.state.currentUserInitials)
-      .then(response => {
-        this.userScores = response.data
-      })
-      .catch(err => {
-        console.log(err)
-      })
+      scoreService.getUserScores(this.initials.toUpperCase())
+        .then(response => {
+          this.userScores = response.data
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
   }
 }
 </script>
 
 <style lang="scss">
+
 #scores {
   font-family: 'VT323', monospace;
   width: 25vw;
@@ -64,6 +82,7 @@ export default {
   flex-direction: column;
   align-items: center;
   font-size: 1.5em;
+  text-align: center;
 }
 
 li{
@@ -79,5 +98,20 @@ li{
 
 ul.score-list {
   padding: 0;
+}
+
+input{
+  color:#ffc438;
+  background-color: #030B12;
+  border: none;
+  font-size: 1em;
+  width: 4em;
+  text-align: center;
+  text-transform:uppercase;
+  border-style: none;
+}
+
+input:focus{
+  outline: none;
 }
 </style>

@@ -12,19 +12,6 @@
         <div>{{ tile }}</div>
         </li>
     </ul>
-    <div class="button-lives">
-        <div>
-            <button 
-            class="btn-outline" 
-            @click="newHand" 
-            :disabled="!this.$store.state.isGameStarted||this.$store.state.lifeLines===0">
-            Get New Hand
-            </button>
-        </div>
-        <div>
-            <p>Lives: {{this.$store.state.lifeLines}}</p>
-        </div>
-    </div>
   </div>
 </template>
 
@@ -61,7 +48,11 @@ export default {
         canDrawMore(){
             return false
         }
-        
+    },
+    created(){
+        this.emitter.on('pressNewHand', () => {
+            this.newHand()
+        })
     }
 }
 </script>

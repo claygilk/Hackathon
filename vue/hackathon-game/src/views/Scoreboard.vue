@@ -1,7 +1,7 @@
 <template>
   <div id="view">
     <div class="scoreboard">
-      <h1>LEADERBOARDS</h1>
+      <h1>Leaderboards</h1>
       <Scores/>
     </div>
   </div>

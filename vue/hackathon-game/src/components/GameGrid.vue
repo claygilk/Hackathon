@@ -17,12 +17,6 @@
             </tr>
             
         </table>
-        <button 
-        class="btn-outline" 
-        @click="readGrid()" 
-        :disabled="!this.$store.state.isGameStarted||this.$store.state.currentWord.length<2">
-        Done Spelling 
-        </button>
     </div>
 </template>
 
@@ -301,12 +295,18 @@ export default {
     created(){
         this.emitter.on('undoWord', () => {
             this.undoWord()
-        }),
+        })
+        
         this.emitter.on('startGame', () => {
             this.placeStarterTiles()
         })
+
         this.emitter.on('doneSpelling', () => {
             this.scoreGrid()
+        })
+
+        this.emitter.on('pressDone', () => {
+            this.readGrid()
         })
     }
 }
@@ -372,6 +372,8 @@ td {
     border-spacing: 2.5px;
     display: grid;
     justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
 }
 
