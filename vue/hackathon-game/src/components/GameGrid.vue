@@ -18,7 +18,7 @@
             
         </table>
         <button 
-        class="push-btn" 
+        class="btn-outline" 
         @click="readGrid()" 
         :disabled="!this.$store.state.isGameStarted||this.$store.state.currentWord.length<2">
         Done Spelling 
@@ -314,11 +314,29 @@ export default {
 
 <style lang="scss">
 
+td {
+    width: 35px;
+    height: 35px;
+    border-radius:20%;
+}
+@media only screen and (max-width: 760px){
+    td{
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media only screen and (max-width: 560px){
+    td{
+        width: 20px;
+        height: 20px;
+    }
+
+}
+
 .empty-square{
     border: 1px solid black;
-    border-radius:10px;
-    width: 50px;
-    height: 50px;
+
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
@@ -329,6 +347,7 @@ export default {
     }
 }
 
+
 .filled-square{
     // background-color: #fcde65;
     // color: black;
@@ -336,14 +355,12 @@ export default {
     text-shadow:  2px 2px 5px #ffc338ab;
     box-shadow: inset 0px 0px 3px 3px #fcde65ea;
     font-family: 'VT323', monospace;
-    font-size: 2.5em;
+    font-size: 1.5rem;
     font-weight: 500;
-    border-radius:10px;
-    width: 50px;
-    height: 50px;
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
+    cursor: default;
 
 }
 .filled-square:hover{
