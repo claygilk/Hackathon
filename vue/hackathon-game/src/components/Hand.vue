@@ -15,7 +15,7 @@
     <div class="button-lives">
         <div>
             <button 
-            class="push-btn" 
+            class="btn-outline" 
             @click="newHand" 
             :disabled="!this.$store.state.isGameStarted||this.$store.state.lifeLines===0">
             Get New Hand
@@ -66,40 +66,57 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 ul.hand{
     display: flex;
     flex-direction: row;
-    border: 3px solid #fcde65;
-    box-shadow: 0px 0px 4px 4px #ffc33863;
+    border: 2px solid #fcde65;
+    box-shadow: 0px 0px 4px 4px #ffc43863;
     border-radius: 20px;
     margin-left: 3em;
     margin-right: 3em;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    height: 80px;
+    height: 3em;
+    padding-left: 0;
 }
-li.tile {
-    list-style-type: none;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-    width: 50px;
-    height: 50px;
+
+ul.hand > li.tile {
+    color: #ffc438;
+    text-shadow:  2px 2px 5px #ffc338ab;
+    box-shadow: inset 0px 0px 3px 3px #fcde65ea;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 35px;
+    height: 35px;
+    border-radius:20%;
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
-    cursor: pointer;
-    background-color: #fcde65;
-    color: black;
-    font-family: 'VT323', monospace;
-    font-size: 2.75em;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
     cursor: grab;
+
+    &:hover{
+        text-shadow: 3px 3px 6px #ffd268ab;
+        box-shadow: inset  0px 0px 4px 4px #f8df7dea;
+    }
 }
+
+@media only screen and (max-width: 760px){
+    ul.hand > li.tile {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media only screen and (max-width: 560px){
+    ul.hand > li.tile {
+        width: 20px;
+        height: 20px;
+    }
+
+}
+
 div.button-lives{
     display: flex;
     flex-flow: row wrap;

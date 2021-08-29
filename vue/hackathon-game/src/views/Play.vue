@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="play-display">
-      <button class="push-btn" v-if="!this.$store.state.isGameStarted" @click="startGame">New Game</button>
-      <button class="push-btn" v-if="this.$store.state.isGameStarted" @click="endGame">End Game</button>
+      <button class="btn-outline" v-if="!this.$store.state.isGameStarted" @click="startGame">NEW GAME</button>
+      <button class="btn-outline" v-if="this.$store.state.isGameStarted" @click="endGame">GIVE UP</button>
 
       <h2>Score: {{ this.$store.state.currentScore }}</h2>
       
@@ -89,13 +89,35 @@ h2{
 
 .play-display{
   background-color: #030B12;
-
   box-shadow:  0px 0px 4px 4px #34a3cca9;
-  /* border-right: 0px solid #34A3CC; */
   width: 75vw;
   height: 150vh;
   text-align: center;
-  /* overflow: auto; */
+}
+
+button.btn-outline{
+  display: inline-block;
+  border: none;
+  border: 1.5px solid #ffc438;
+  color: #ffc33873;
+  background-color: #030B12;
+  font-size: 2em;
+  border-radius: 50px;
+  box-shadow: 0px 0px 3px 3px #fcde65b7;
+  text-shadow: inset 1px 1px 10px #fcde65ea;
+  margin-top: 50px;
+  cursor: pointer;
+  padding: 7.5px 15px;
+  
+  &:active{
+  box-shadow: 0px 0px 4px 4px #fcde6593;
+  }
+
+  &:hover{
+    color: #ffc438;
+    box-shadow: 0px 0px 5px 5px #fbe37fb7;
+    text-shadow:  1px 1px 10px #fcde65ea;
+  }
 }
 
 button.push-btn {
