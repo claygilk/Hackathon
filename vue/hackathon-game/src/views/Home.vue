@@ -66,7 +66,7 @@ div.homepage{
   border-left: 3px solid #34A3CC;
   border-right: 3px solid #34A3CC;
   width: 75vw;
-  height: 100vw;
+  height: auto;
   text-align: center;
 }
 

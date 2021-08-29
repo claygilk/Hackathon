@@ -40,8 +40,9 @@
   // width: 100vw;
   // height: 100vh;
   width: 100%;
-  height: 140vh;
-  background-size: auto;
+  height: auto;
+  background-size: cover;
+  background-repeat: repeat;
   background-image: url("./assets/arcadepattern.png");
   z-index: -1;
 }
