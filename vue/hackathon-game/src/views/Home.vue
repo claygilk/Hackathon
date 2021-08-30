@@ -50,10 +50,26 @@
             <li><i class="fab fa-linkedin"></i><a href="www.linkedin.com/in/jamie-mullins"></a></li>
           </ul>
         </div>
+
       </div>
+
       </div>
+      
     </div>
+    <footer>
+
+      <p>Copyright © Scrobble 2021</p>
+      <!-- <div>
+        <ul class="footer-links">
+          <li><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com"></a></li>
+          <li><i class="fab fa-github-square"></i><a href="https://github.com"></a></li>
+          <li><i class="fab fa-twitter"></i><a href="https://twitter.com"></a></li>
+          <li><i class="fab fa-instagram-square"></i><a href="https://www.instagram.com"></a></li>
+        </ul>
+      </div> -->
+    </footer>
   </div>
+  
 </template>
 
 <script>
@@ -153,5 +169,11 @@ div.profile>div{
   padding-left: 0;
   cursor: pointer;
   //justify-content: flex-start;
+}
+
+.footer-links{
+  display: flex;
+  justify-content: space-between;
+
 }
 </style>
