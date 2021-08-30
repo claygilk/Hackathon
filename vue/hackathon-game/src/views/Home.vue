@@ -24,7 +24,7 @@
           <h3>
             The back end consists of a REST API built with Node.js/Express that can perform read and write operations on a MongoDB database. The database is only used to keep track of high scores. This Express server was containerized with Docker and hosted on Google Cloud Run. We used Node.js, Express, and MongoDB because it was quick to set up and easy to deploy.
           </h3>
-          <h3>In collaboration with <a href="https://mintbean.io/meets?sort=upcoming"><u>Mintbean</u></a></h3>
+          
         </div>
       </div>
       <div>
@@ -46,8 +46,8 @@
           <img class="jamie-pic" src="../assets/jamiesamazingheadshot.jpg">
           <p class="jamiep">Jamie is a motivated software developer with 5+ years of management experience in various work environments. She is always eager to learn and create new things.</p>
           <ul class="social-links">
-            <li><i class="fab fa-github-square"></i><a href="https://github.com/jamiemullins1"></a></li>
-            <li><i class="fab fa-linkedin"></i><a href="www.linkedin.com/in/jamie-mullins"></a></li>
+            <li><a href="https://github.com/jamiemullins1"><i class="fab fa-github-square"></i></a></li>
+            <li><a href="www.linkedin.com/in/jamie-mullins"><i class="fab fa-linkedin"></i></a></li>
           </ul>
         </div>
 
@@ -56,17 +56,19 @@
       </div>
       
     </div>
-    <footer>
-
-      <p>Copyright © Scrobble 2021</p>
-      <!-- <div>
+    <footer class="footer">
+      <div>
+      <h1>In collaboration with <a href="https://mintbean.io/meets?sort=upcoming"><img class="mintbean-logo" src="../assets/mintbean.png"><u>Mintbean</u></a></h1>
+      <div>
         <ul class="footer-links">
-          <li><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com"></a></li>
-          <li><i class="fab fa-github-square"></i><a href="https://github.com"></a></li>
-          <li><i class="fab fa-twitter"></i><a href="https://twitter.com"></a></li>
-          <li><i class="fab fa-instagram-square"></i><a href="https://www.instagram.com"></a></li>
+          <li><a href="https://pensive-minsky-873ba7.netlify.app/"><i class="fas fa-gamepad"></i></a>Netlify</li>
+          <li><a href="https://github.com/claygilk/Hackathon"><i class="fab fa-github-square"></i></a>Sourcecode</li>
+          <li><a href="https://twitter.com"><i class="fab fa-twitter"></i></a>Twitter</li>
+          <li><a href="https://www.instagram.com"><i class="fab fa-instagram-square"></i></a>Instagram</li>
         </ul>
-      </div> -->
+      </div>
+      <p>Copyright © Scrobble 2021</p>
+      </div>
     </footer>
   </div>
   
@@ -173,7 +175,14 @@ div.profile>div{
 
 .footer-links{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
 
+.mintbean-logo{
+  height: 40px;
+}
+
+.footer{
+  background-color: #33a3cc;
 }
 </style>
