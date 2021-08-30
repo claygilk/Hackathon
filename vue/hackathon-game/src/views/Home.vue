@@ -6,9 +6,18 @@
         <h1 class="gameplay">Gameplay</h1>
         <div class="rules">
           <h3>The objective of Scrobble is to spell as many words as you can. Each letter tile has a point value assigned to it, like in Scrabble. The more words you spell, the more points you earn.</h3>
-          <h3>To spell a word, click-and-drag a letter tile from your hand to a square on the board. You can only place a tile on an empty square that is vertically or horizontally adjacent to an already placed letter tile. When you start the game, 5 random letter tiles will be placed on the board to get you started.</h3>
+          <div class="text-gif">
+            <h3>To spell a word, click-and-drag a letter tile from your hand to a square on the board. You can only place a tile on an empty square that is vertically or horizontally adjacent to an already placed letter tile. When you start the game, 5 random letter tiles will be placed on the board to get you started.
+            </h3>
+            <img src="../../../../screencaps/dragndrop.gif" alt="Drag and Drop Gif">
+
+          </div>
           <h3>There are some restrictions with spelling words: You can only spell words from left-to-right, or top-to-bottom. The minimum length for a word is 3 letters. When you are done spelling a word, press the "Done" button. If the word is valid you will earn points. If the word is invalid it will be removed from the board.</h3>
-          <h3>If you get stuck, and can't spell anymore words you can click the "Get New Hand" button, to return your tiles to the deck and draw 10 more random tiles. Drawing a new hand consume a life, and you only get 3 lives per game. When you run out of lives you can no longer refresh you hand.</h3>
+          <div class="text-gif">
+          <img src="../../../../screencaps/newhand.gif" style="height:375px;" alt="New Hand Gif">
+          <h3>If you get stuck, and can't spell anymore words you can click the "Get New Hand" button, to return your tiles to the deck and draw 10 more random tiles. Drawing a new hand consume a life, and you only get 3 lives per game. When you run out of lives you can no longer refresh you hand.
+          </h3>
+          </div>
           <h3>When you think you can no longer spell anymore words, press the "Give Up" button. This will end the game and prompt you to enter your initals for a chance to make it onto the leaderboards.</h3>
         </div>
         <div class="dev">
@@ -158,6 +167,41 @@ div.profile>div{
   padding-left: 0;
   cursor: pointer;
   //justify-content: flex-start;
+}
+
+img{
+  width: auto;
+  height: 175px;
+  display: inline-block;
+}
+
+div.text-gif{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text-gif > h3{
+  max-width: 25vw;
+  &:hover {
+    color: #ffc438;
+  }
+}
+
+@media only screen and (max-width: 1520px){
+  div.text-gif{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center
+  }
+
+  .text-gif > h3 {
+    width: auto;
+    max-width: none;
+  }
+
 }
 
 </style>
