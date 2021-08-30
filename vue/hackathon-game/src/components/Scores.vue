@@ -4,10 +4,18 @@
     <div class="heading">
       <h2>Top 10 Highscores</h2>
     </div>
+
     <ul class="score-list">
-      <li v-for="score in highScores" :key="score._id"> 
-        <div>{{score.username}}</div>
-        <div>{{score.point_total}}</div>
+      <li class="column-header">
+          <span>Rank</span> 
+          <div>Score</div>
+          <div>Name</div>
+      </li>
+
+      <li v-for="(score, i) in highScores" :key="score._id">
+          <span class="rank">{{i+1}}</span>
+          <div>{{score.point_total}}</div>
+          <div class="username">{{score.username}}</div>
       </li>
     </ul>
 
@@ -25,12 +33,20 @@
         </form>
       </h2>
     </div>
+
     <ul class="score-list">
-      <li v-for="score in userScores" :key="score._id"> 
-        <div>{{score.username}}</div>
-        <div>{{score.point_total}}</div>
+      <li class="column-header">
+          <span>Rank</span> 
+          <div>Score</div>
+          <div>Name</div>
+      </li>
+      <li v-for="(score, i) in userScores" :key="score._id">
+          <span class="rank">{{i+1}}</span>
+          <div>{{score.point_total}}</div>
+          <div class="username">{{score.username}}</div>
       </li>
     </ul>
+
   </div>
 </template>
 
@@ -98,9 +114,26 @@ li{
   }
 }
 
+li.column-header {
+  color: #ffc438;
+  margin-bottom: 0.5em;
+}
+
+div.rank-name{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 125px;
+}
+.rank{
+  width:24px; 
+  display: inline-block;
+  text-align: end;
+}
+
 ul.score-list {
   padding: 0;
-  height: 300px;
+  height: 360px;
 }
 
 input{
@@ -116,5 +149,9 @@ input{
 
 input:focus{
   outline: none;
+}
+
+div.username{
+  text-align: center;
 }
 </style>
