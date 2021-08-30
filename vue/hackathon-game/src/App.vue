@@ -6,6 +6,40 @@
       <router-link :to="{ name: 'Scoreboard'}">Scoreboard</router-link> 
     </div>
     <router-view id="view"/>
+
+    <footer class="footer">
+      <ul>
+          <li>
+            <p class="footer-txt">In collaboration with  </p>
+            <a href="https://mintbean.io/meets?sort=upcoming">
+              <img class="mintbean-logo" src="./assets/mintbean.png">
+              <u>Mintbean</u>
+            </a>
+          </li>
+          <li>
+            <p class="footer-txt">Copyright © Scrobble 2021</p>
+          </li>
+      </ul>
+
+        <ul class="footer-links">
+          <li class="footer-txt"><a href="https://pensive-minsky-873ba7.netlify.app/">
+            <i class="fas fa-gamepad"></i> </a> Play Now
+          </li>
+          <li class="footer-txt"><a href="https://github.com/claygilk/Hackathon">
+            <i class="fab fa-github-square"></i> </a> Source Code
+          </li>
+          <li class="footer-txt">
+            <a href="https://twitter.com">
+              <i class="fab fa-twitter">
+              </i> 
+            </a> Twitter
+          </li>
+          <li class="footer-txt"><a href="https://www.instagram.com">
+            <i class="fab fa-instagram-square"></i> </a> Instagram
+          </li>
+        </ul>
+
+    </footer>
   </div>
 </template>
 
@@ -63,6 +97,30 @@ a:hover{
 
 body { 
   margin: 0 !important; 
+}
+
+.footer-links{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1em;
+}
+
+.mintbean-logo{
+  height: 20px;
+}
+
+.footer{
+  background-color: #33a3cc;
+}
+.footer-txt{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1em;
+  color: white;
+}
+
+a > i {
+  margin-right: 0.5em;
 }
 
 </style>

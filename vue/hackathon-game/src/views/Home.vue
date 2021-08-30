@@ -56,20 +56,7 @@
       </div>
       
     </div>
-    <footer class="footer">
-      <div>
-      <h1>In collaboration with <a href="https://mintbean.io/meets?sort=upcoming"><img class="mintbean-logo" src="../assets/mintbean.png"><u>Mintbean</u></a></h1>
-      <div>
-        <ul class="footer-links">
-          <li><a href="https://pensive-minsky-873ba7.netlify.app/"><i class="fas fa-gamepad"></i></a>Netlify</li>
-          <li><a href="https://github.com/claygilk/Hackathon"><i class="fab fa-github-square"></i></a>Sourcecode</li>
-          <li><a href="https://twitter.com"><i class="fab fa-twitter"></i></a>Twitter</li>
-          <li><a href="https://www.instagram.com"><i class="fab fa-instagram-square"></i></a>Instagram</li>
-        </ul>
-      </div>
-      <p>Copyright © Scrobble 2021</p>
-      </div>
-    </footer>
+    
   </div>
   
 </template>
@@ -173,16 +160,4 @@ div.profile>div{
   //justify-content: flex-start;
 }
 
-.footer-links{
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.mintbean-logo{
-  height: 40px;
-}
-
-.footer{
-  background-color: #33a3cc;
-}
 </style>
