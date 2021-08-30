@@ -25,11 +25,13 @@ export default {
   name: 'GameOver',
   data() {
     return{
-      initals: 'AAA'
+      initals: 'AAA',
+      isLoading: false,
     }
   },
   methods: {
     close() {
+      document.body.style.cursor = 'wait'
       this.$store.state.currentUserInitials = this.initals.toUpperCase()
       this.$emit('close', this.initals)
     },

@@ -62,6 +62,8 @@ export default {
     }
   },
   created() {
+    document.body.style.cursor = 'auto'
+    this.initials = this.$store.state.currentUserInitials
     this.getScores()
   },
   methods:{
