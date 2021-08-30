@@ -8,17 +8,21 @@
     <router-view id="view"/>
 
     <footer class="footer">
-      <ul>
-          <li>
-            <p class="footer-txt">In collaboration with  </p>
+      <ul class="footer-credits">
+        <li class="footer-txt">
+          <div>
+            <span class="footer-txt">In collaboration with  </span>
             <a href="https://mintbean.io/meets?sort=upcoming">
               <img class="mintbean-logo" src="./assets/mintbean.png">
               <u>Mintbean</u>
             </a>
-          </li>
-          <li>
-            <p class="footer-txt">Copyright © Scrobble 2021</p>
-          </li>
+          </div>
+        </li>
+        <li class="footer-txt">
+          <div>
+            <span>Copyright © Scrobble 2021</span>
+          </div>
+        </li>
       </ul>
 
         <ul class="footer-links">
@@ -103,10 +107,17 @@ body {
   display: flex;
   justify-content: space-evenly;
   font-size: 1em;
+  margin-bottom: 0;
+}
+.footer-credits {
+  margin-top: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 .mintbean-logo{
   height: 20px;
+  margin-right: 0.5em;
 }
 
 .footer{
@@ -117,10 +128,18 @@ body {
   margin-bottom: 0;
   font-size: 1em;
   color: white;
+
+  &:hover{
+    color: #ffc438;
+  }
 }
 
 a > i {
   margin-right: 0.5em;
+}
+
+ul{
+  padding-left: 0
 }
 
 </style>
