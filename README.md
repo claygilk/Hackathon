@@ -7,7 +7,7 @@
 
 ## Back End API Documentation
 
-The source code for the back end of this project is located in the `/node` directory. The back end consists of an Express server REST API that can perform read and write operations on a MongoDB database. The database is only used to keep track of high scores. 
+The source code for the back end of this project is located in the `/node` directory. The back end consists of a REST API built with Node.js/Express that can perform read and write operations on a MongoDB database. The database is only used to keep track of high scores. 
 
 This Express server was containerized with Docker and hosted on Google Cloud Run.
 
@@ -32,7 +32,18 @@ $ nodemon app
 ```
 
 ## Front End Documentation
-lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum
+The source code for the front end of this project is located in the `/vue` directory. The front end consists of a Vue.js (v3.x) application, using Vuex for state managment. Axios was used to make API calls to the back end. We decided not to use a CSS framework in order to get more pratice with vanilla CSS. 
+
+The app consists of three pages or views: a homepage, a leaderboard page, and a page to play the game. Navigation between pages is handled by the Vue Router.  
+
+Much of the internal game-logic for Scrobble is handled by the JavaScript modules in the `/engine` directory. Much of the game engine code was devloped using TDD. Testing was done with Mocha. Test files are located in the `/hackathon-game` directory. 
+
+In order to run a local version of the front end, navigate to the `/hackathon-game` directory and run the following commands from the console.
+
+```
+$ npm install
+$ npm run serve
+```
 
 ## Player Instructions
 The objective of Scrobble is to spell as many words as you can. Each letter tile has a point value assigned to it, like in Scrabble. The more words you spell, the more points you earn. 

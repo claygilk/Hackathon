@@ -41,6 +41,7 @@
   background-repeat: repeat-y;
   background-image: url("./assets/arcadepattern.png");
   z-index: -1;
+  // box-shadow:  inset 0px 0px 4px 4px #34a3cca9;
 }
 
 a{
