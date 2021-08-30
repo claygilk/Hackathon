@@ -97,6 +97,7 @@ export default {
     },
     pressNewHand(){
       console.log('pressNewHand()')
+      this.$store.state.lifeLines--
       this.emitter.emit('pressNewHand')
     }
   },

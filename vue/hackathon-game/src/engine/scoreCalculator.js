@@ -37,7 +37,6 @@ scores.set('Z', 10)
 const calcWordScore = (word) => {
     
     let letterArray = Array.from(word)
-    console.log('letterArray' + letterArray)
 
     let total = 0
 

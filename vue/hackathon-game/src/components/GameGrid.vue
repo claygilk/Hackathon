@@ -40,6 +40,13 @@ export default {
     },
 
     methods: {
+        addPointToLetter(letter){
+            let letterToArray = [letter]
+            let point = scoreCalculator.calcWordScore(letterToArray)
+            let html = letter + `<sup class="point">${point}</sup>`
+
+            return html
+        },
         placeStarterTiles(){
             console.log('placeStarterTiles()')
 
@@ -51,7 +58,7 @@ export default {
 
                 let cell = document.getElementById(cellId)
 
-                cell.innerText = letter
+                cell.innerHTML = this.addPointToLetter(letter)
                 cell.classList.remove('empty-square')
                 cell.classList.add('filled-square')
             }
@@ -89,7 +96,7 @@ export default {
 
             let cellId = cell.id
 
-            cell.innerText = letter 
+            cell.innerHTML = this.addPointToLetter(letter) 
             
             this.$store.commit('xPlaceTile', {letter, cellId})
 
@@ -114,6 +121,7 @@ export default {
 
         },
         readGrid(){
+            console.log('readGrid()')
             this.allRowsCols = []
             this.allWords = []
 
@@ -129,6 +137,8 @@ export default {
                 if(wordArray.length > 0){
                     
                     wordArray.forEach(word => {
+                        // strip numbers out of tile
+                        word = word.replace(/\d/g,'')
                         if (word.length > 1) {
                             
                             this.allWords.push(word)
@@ -366,6 +376,10 @@ td {
 .filled-square:hover{
     text-shadow: 3px 3px 6px #ffd268ab;
     box-shadow: inset  0px 0px 4px 4px #f8df7dea;
+}
+
+sup.point{
+    font-size: 0.5em;
 }
 
 .grid{

@@ -8,14 +8,15 @@
         draggable="true" 
         class="tile" 
         v-for="(tile, i) in hand" :key="tile + i"
-        >
-        <div>{{ tile }}</div>
+        >{{tile}}<sup class="point">{{getPoint(tile)}}</sup>
         </li>
     </ul>
   </div>
 </template>
 
 <script>
+import scoreCalculator from '../engine/scoreCalculator'
+
 export default {
     data() {
         return {
@@ -26,19 +27,23 @@ export default {
             this.$store.commit('xSelectTile', letter)
         },
         drawMoreTiles(){
+            console.log('drawMoreTiles()')
             this.$store.commit('xDealHand')
         },
         newHand(){
             console.log('newHand()')
             this.$store.commit('xEmptyHand')
             this.$store.commit('xDealHand')
-            this.$store.state.lifeLines--
         },
         startDrag(event, tile){
             event.dataTransfer.dropEffect = 'move'
             event.dataTransfer.effectAllowed = 'move'
             event.dataTransfer.setData('letter', tile)
             this.selectTile(tile)
+        },
+        getPoint(letter){
+            console.log('addPointToHandTiles')
+            return scoreCalculator.calcWordScore([letter])
         }
     },
     computed: {
@@ -53,11 +58,17 @@ export default {
         this.emitter.on('pressNewHand', () => {
             this.newHand()
         })
+    },
+    update(){
+        console.log('update')
     }
 }
 </script>
 
 <style lang="scss">
+sup.point{
+    font-size: 0.5em;
+}
 ul.hand{
     display: flex;
     flex-direction: row;
