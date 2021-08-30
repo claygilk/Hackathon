@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-view">
     <div class="play-display">
       <div class="buttons">
         <button class="btn-outline" v-if="!this.$store.state.isGameStarted" @click="startGame">NEW GAME</button>
@@ -113,7 +113,7 @@ export default {
   background-color: #030B12;
   box-shadow:  0px 0px 4px 4px #34a3cca9;
   width: 75vw;
-  height: 150vh;
+  height: auto;
   text-align: center;
 }
 

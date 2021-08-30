@@ -15,6 +15,7 @@
 *{
   font-family: 'VT323', monospace;
 }
+
 #nav{
   background: #34A3CC;
   color: white !important;
@@ -41,6 +42,10 @@
   background-repeat: repeat-y;
   background-image: url("./assets/arcadepattern.png");
   z-index: -1;
+    display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
   // box-shadow:  inset 0px 0px 4px 4px #34a3cca9;
 }
 
@@ -53,7 +58,7 @@ a{
 }
 
 a:hover{
-    color: #ffc438
+  color: #ffc438
 }
 
 body { 

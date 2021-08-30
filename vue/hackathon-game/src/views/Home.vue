@@ -91,6 +91,7 @@ div.homepage{
 
 h3{
   font-weight: normal;
+  color: white;
 }
 div.rules>h3{
   &:hover{

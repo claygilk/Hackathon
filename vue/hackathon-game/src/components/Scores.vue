@@ -75,6 +75,7 @@ export default {
 #scores {
   font-family: 'VT323', monospace;
   width: 25vw;
+  height: auto;
 }
 
 .heading{
@@ -91,6 +92,7 @@ li{
   flex-direction: row;
   justify-content: space-between;
   font-size: 1.5em;
+  color: white;
   &:hover{
     color: #ffc438
   }
@@ -98,6 +100,7 @@ li{
 
 ul.score-list {
   padding: 0;
+  height: 300px;
 }
 
 input{

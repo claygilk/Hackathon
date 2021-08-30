@@ -42,27 +42,29 @@ export default {
 
   .modal > h1{
     color: white;
+    font-size: 3em;
   }
   button#done{
     border: none;
     background-color: #030B12;
     color:#ffc438;
-    font-size: 1.5em;
+    font-size: 2em;
     margin-bottom: 25px;
     margin-top: 0;
   }
 
   label{
     color: white;
+    font-size: 2em;
   }
 
   input{
     color:#ffc438;
     background-color: #030B12;
     border: none;
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    font-size: 2em;
+    margin-bottom: 40px;
+    margin-top: 40px;
     width: 4em;
     text-align: center;
     text-transform:uppercase;
