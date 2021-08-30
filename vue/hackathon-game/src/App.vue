@@ -1,8 +1,6 @@
 <template>
   <div>
-    
     <div id="nav">
-      <!-- <router-link :to="{ name: 'user', params: { userId: 123 }}">User</router-link> -->
       <router-link :to="{ name: 'Home'}">Homepage</router-link>
       <router-link :to="{ name: 'Play'}">Play</router-link>
       <router-link :to="{ name: 'Scoreboard'}">Scoreboard</router-link> 
@@ -19,7 +17,7 @@
 }
 #nav{
   background: #34A3CC;
-  color: white;
+  color: white !important;
   position: absolute;
   top: 0;
   left: 0;
@@ -37,8 +35,6 @@
 
 #view{
   margin-top: 75px;
-  // width: 100vw;
-  // height: 100vh;
   width: 100%;
   height: auto;
   background-size: 100%;
@@ -47,13 +43,12 @@
   z-index: -1;
 }
 
-
 a{
   text-decoration: none;
+  color: white;
   &:visited{
     color: white;
   }
-
 }
 
 a:hover{
@@ -63,7 +58,5 @@ a:hover{
 body { 
   margin: 0 !important; 
 }
-
-
 
 </style>

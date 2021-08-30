@@ -14,7 +14,7 @@
                 v-model="initals"
                 onkeypress="return /[a-z]/i.test(event.key)">
             </div>
-            <button id="done" @click.prevent="close">DONE</button>
+            <button id="done" class="btn-outline" @click.prevent="close">DONE</button>
           </form>
       </div>
   </div>
@@ -39,11 +39,21 @@ export default {
 
 
 <style scoped>
-  button{
+
+  .modal > h1{
+    color: white;
+  }
+  button#done{
     border: none;
     background-color: #030B12;
     color:#ffc438;
     font-size: 1.5em;
+    margin-bottom: 25px;
+    margin-top: 0;
+  }
+
+  label{
+    color: white;
   }
 
   input{

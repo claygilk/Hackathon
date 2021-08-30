@@ -14,13 +14,13 @@
       <h1 class="development">
         Development
       </h1>
-      <h3>In collaboration with <a href="https://mintbean.io/meets?sort=upcoming"><u>mintbean</u></a></h3>
       <h3>
         Front-End: We used Vue.js and CSS to (fairly) easily organize and style our pages.
       </h3>
       <h3>
         Back-End: We used Node.js, Express, and MongoDB because it was quick to set up and easy to deploy.
       </h3>
+      <h3>In collaboration with <a href="https://mintbean.io/meets?sort=upcoming"><u>Mintbean</u></a></h3>
       </div>
       <div>
       <h1 class="meet-the-engineers">
@@ -84,6 +84,9 @@ div.homepage{
   text-align: justify;
 }
 
+h3{
+  font-weight: normal;
+}
 div.rules>h3{
   &:hover{
     color: #ffc438;
@@ -114,6 +117,7 @@ div.dev>h3{
   border-radius: 50%;
   //box-shadow: 0px 0px 4px 4px #ffc33863;
 }
+
 .jamiep, .clayp{
   width: 15vw;
   font-size: 1rem;
@@ -133,8 +137,6 @@ div.profile>div{
   width: 250px;
   height: auto;
   border-radius: 50%;
-  //box-shadow: 0px 0px 4px 4px #33a3cc;
-  //border: 1px solid #33a3cc;
 }
 
 .social-links{
@@ -142,6 +144,7 @@ div.profile>div{
   justify-content: space-evenly;
   width: 100%;
   padding-left: 0;
+  cursor: pointer;
   //justify-content: flex-start;
 }
 </style>
