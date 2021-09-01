@@ -15,20 +15,20 @@
           <h3>There are some restrictions with spelling words: You can only spell words from left-to-right, or top-to-bottom. The minimum length for a word is 3 letters. When you are done spelling a word, press the "Done" button. If the word is valid you will earn points. If the word is invalid it will be removed from the board.</h3>
           <div class="text-gif">
           <img src="../../../../screencaps/newhand.gif" style="height:375px;" alt="New Hand Gif">
-          <h3>If you get stuck, and can't spell anymore words you can click the "Get New Hand" button, to return your tiles to the deck and draw 10 more random tiles. Drawing a new hand consume a life, and you only get 3 lives per game. When you run out of lives you can no longer refresh you hand.
+          <h3>If you get stuck, and can't spell anymore words you can click the "Get New Hand" button, to return your tiles to the deck and draw 10 more random tiles. Drawing a new hand consumes a life, and you only get 3 lives per game. When you run out of lives you can no longer refresh you hand.
           </h3>
           </div>
-          <h3>When you think you can no longer spell anymore words, press the "Give Up" button. This will end the game and prompt you to enter your initals for a chance to make it onto the leaderboards.</h3>
+          <h3>When you think you can no longer spell anymore words, press the "Give Up" button. This will end the game and prompt you to enter your initials for a chance to make it onto the leaderboards.</h3>
         </div>
         <div class="dev">
           <h1 class="development">
             Development
           </h1>
           <h3>
-            The front end consists of a Vue.js (v3.x) application, using Vuex for state managment. Axios was used to make API calls to the back end. We decided not to use a CSS framework in order to get more pratice with vanilla CSS. Navigation between pages is handled by the Vue Router.  
+            The front end consists of a Vue.js (v3.x) application, using Vuex for state management. Axios was used to make API calls to the back end. We decided not to use a CSS framework in order to get more practice with vanilla CSS. Navigation between pages is handled by the Vue Router.  
           </h3>
           <h3>
-            Much of the internal game-logic for Scrobble is handled by the JavaScript modules in a seperate directory from the Vue components. Much of the game engine logic was devloped using TDD with the Mocha testing framework. 
+            Much of the internal game-logic for Scrobble is handled by the JavaScript modules in a seperate directory from the Vue components. Much of the game engine logic was developed using TDD with the Mocha testing framework. 
           </h3>
           <h3>
             The back end consists of a REST API built with Node.js/Express that can perform read and write operations on a MongoDB database. The database is only used to keep track of high scores. This Express server was containerized with Docker and hosted on Google Cloud Run. We used Node.js, Express, and MongoDB because it was quick to set up and easy to deploy.

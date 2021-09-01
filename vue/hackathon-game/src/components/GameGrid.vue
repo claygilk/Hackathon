@@ -111,7 +111,7 @@ export default {
 
             this.$store.state.currentCellIds.forEach(cell => {
                 let toClear = document.getElementById(cell)
-                toClear.innerHTML = '&nbsp;'
+                toClear.innerHTML = ''
                 toClear.classList.add('empty-square')
                 toClear.classList.remove('filled-square')
             })
